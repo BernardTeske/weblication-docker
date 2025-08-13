@@ -1,0 +1,19 @@
+services:
+  weblication:
+    build: .
+    container_name: weblication20
+    ports:
+      - "8080:80"
+    volumes:
+      - ./webroot:/var/www/html
+      - ./apache/vhost.conf:/etc/apache2/sites-available/000-default.conf:ro
+      - ./php/custom.ini:/usr/local/etc/php/conf.d/zz-custom.ini:ro
+    environment:
+      # passe bei Bedarf an
+      APACHE_DOCUMENT_ROOT: /var/www/html
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost/ || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
