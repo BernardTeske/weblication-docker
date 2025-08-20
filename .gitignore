@@ -4,3 +4,4 @@ webroot/index.php
 webroot/*-wGlobal
 webroot/*-wAssets
 webroot/*
+webroot-test

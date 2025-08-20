@@ -1,20 +1,38 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 DOCROOT="/var/www/html"
+CACHE="/opt/weblication/wSetup.zip"
+URL_DEFAULT="https://help-send.weblication.de/dev/downloads/wSetup.zip"
+URL="${WSETUP_URL:-$URL_DEFAULT}"
 
-# Schreibrechte sicherstellen (wichtig für Weblication)
-chown -R www-data:www-data "$DOCROOT"
+ensure_permissions() {
+  chown -R www-data:www-data "$DOCROOT" || true
+}
 
-# Wenn webroot leer ist: Setup ZIP wie von dir gewohnt holen und entpacken
-if [ -z "$(ls -A "$DOCROOT")" ]; then
-  echo "Docroot leer – lade Weblication wSetup.zip..."
-  tmpzip="/tmp/wSetup.zip"
-  curl -fsSL -o "$tmpzip" "https://help-send.weblication.de/dev/downloads/wSetup.zip"
-  unzip -o "$tmpzip" -d "$DOCROOT"
-  rm -f "$DOCROOT"/*.txt "$tmpzip"
-  chown -R www-data:www-data "$DOCROOT"
-  echo "wSetup entpackt."
+install_wsetup() {
+  echo "Installiere Weblication-Setup..."
+  local tmp="/tmp/wSetup.zip"
+
+  if [ -s "$CACHE" ]; then
+    cp "$CACHE" "$tmp"
+    echo "Verwende gecachte wSetup.zip."
+  else
+    echo "Lade wSetup.zip von $URL ..."
+    curl -fsSL -o "$tmp" "$URL"
+  fi
+
+  unzip -o "$tmp" -d "$DOCROOT"
+  rm -f "$DOCROOT"/*.txt "$tmp"
+  ensure_permissions
+  echo "Weblication-Setup entpackt."
+}
+
+ensure_permissions
+
+# Wenn keine Index-Datei vorhanden → Setup installieren
+if [ ! -f "$DOCROOT/index.php" ] && [ ! -f "$DOCROOT/index.html" ]; then
+  install_wsetup
 fi
 
 exec "$@"
