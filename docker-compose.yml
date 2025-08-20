@@ -5,7 +5,7 @@ services:
       context: .
       args:
         # Optional: andere Quelle für wSetup.zip
-        WSETUP_URL: https://help-send.weblication.de/dev/downloads/wSetup.zip
+        WSETUP_URL: https://dev.weblication.de/dev/downloads/wSetup.zip
     container_name: weblication20
     ports:
       - "8080:80"
