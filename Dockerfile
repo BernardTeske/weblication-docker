@@ -43,7 +43,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
  && pecl install imagick && docker-php-ext-enable imagick || true
 
 # --- Optionaler Build-Cache für wSetup.zip ---
-ARG WSETUP_URL="https://help-send.weblication.de/dev/downloads/wSetup.zip"
+ARG WSETUP_URL="https://dev.weblication.de/dev/downloads/wSetup.zip"
 RUN set -eux; mkdir -p /opt/weblication; \
     if curl -fSL "$WSETUP_URL" -o /opt/weblication/wSetup.zip; then \
       echo "wSetup.zip gecached."; \
