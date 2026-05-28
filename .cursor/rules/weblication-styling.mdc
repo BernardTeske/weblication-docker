@@ -1,6 +1,6 @@
 ---
 description: Weblication BASE-Styling (design.css, SCSS, CSS-Only)
-globs: webroot/**/{design.css,*.scss,*.css.php}
+globs: webroot/rules-wGlobal/**/design.css, webroot/rules-wGlobal/**/*.scss, webroot/rules-wGlobal/**/*.css.php
 alwaysApply: false
 ---
 
@@ -8,35 +8,38 @@ alwaysApply: false
 
 ## Zentrale Dateien
 
-- `rules-wGlobal/wGlobal/layout/styles/design.css` – Einstieg (`$baseType: mobileFirst`, `$cssInterpreter: wCss2`)
-- Tokens: `colors.scss`, `fonts.scss`, `dimensions.scss`, `breakpoints.scss`
-- Generiert: `layout/styles/optimized/design_*.css` – nach Änderungen Cache beachten
+- `rules-wGlobal/wGlobal/layout/styles/design.css` — Einstieg (`$baseType: mobileFirst`, `$cssInterpreter: wCss2`)
+- Tokens: `colors.scss`, `fonts.scss`, `dimensions.scss`, `breakpoints.scss` (gleicher Ordner)
+- Generiert: `layout/styles/optimized/design_*.css` — nach Änderungen Projekt-Cache leeren
 
 ## Regeln
 
-- Farben/Abstände in SCSS-Tokens ändern, nicht hardcoded in `wItem.php`
-- Kein Bootstrap/Tailwind – BASE-Imports in `design.css` respektieren
+- Farben/Abstände in SCSS-Tokens, nicht hardcoded in `wItem.php`
+- Kein Bootstrap/Tailwind — BASE-Imports in `design.css`
 - Mobile First: Breakpoints aus `breakpoints.scss`
 
 ## CSS-Only Varianten
 
-Neue Varianten als Klasse `.element{Name}_var{N}` mit Kommentar-Eigenschaften:
+Klasse `.element{Name}_var{N}` mit Kommentar-Eigenschaften:
 
-- `-w-option-*` – Verhalten/Optionen (in Templates: `wCSS::getValue($wCSSPath, $selector, '-w-option-…')`)
-- `-w-editmaskExtended-*` – Redakteur-Felder (`wCSS::getEditmaskExtended()`)
+- `-w-option-*` — Verhalten (`wCSS::getValue()`)
+- `-w-editmaskExtended-*` — Redakteur-Felder (`wCSS::getEditmaskExtended()`)
+- Variantenabhängig: `wCSS::getValueOfVariant($wCSSPath, 'elementAccordion', $layout, '-w-option-…')`
 
-Selector und Keys aus bestehenden Items kopieren (z. B. `.elementBox_var5`).
+Selector/Keys aus bestehenden Items kopieren (z. B. `.elementBox_var5`).
 
 ## Templates ↔ CSS
 
 ```php
 wCSS::getValue($wCSSPath, '.elementHeadline_var'.$layout, '-w-option-addLinkToHeadline', 'no', true);
+wCSS::getValueOfVariant($wCSSPath, 'elementList', $listLayout, '-w-option-editmaskTitle');
 ```
 
-Responsive Bildbreiten: `wPageProcessor::setCurrentWidthPath()` (siehe `globals/content.wGlobal.php`).
+Bildbreiten: `wPageProcessor::setCurrentWidthPath()` (`globals/content.wGlobal.php`).  
+Bilder: `wPicture::createPicture()` in Templates.
 
-## CSS registrieren
+## Einbindung
 
-`wPageCur::registerCss($path)` + WSL `includeCssRessources` im `htmlHead`.
+`wPageCur::registerCss($path)` + `<wsl:includeCssRessources …/>` in `htmlHead.wGlobal.php` (Merge/Minify über `wVariables`).
 
-Referenz CSS-Only: https://dev.weblication.de (CSS-Only Referenz)
+CSS-Only-Referenz: https://dev.weblication.de
