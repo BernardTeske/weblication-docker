@@ -1,39 +1,39 @@
 ---
-description: Weblication PHP-Framework statt nativer PHP-Funktionen
-globs: webroot/**/*.php
+description: Weblication PHP-Framework statt nativer PHP-Funktionen (Projektcode)
+globs: webroot/rules/**/*.php, webroot/rules-wGlobal/**/*.php, webroot/rules-wAssets/**/*.php
 alwaysApply: false
 ---
 
 # Weblication PHP-Framework (w* statt native PHP)
 
-Bevorzuge die öffentliche `w*`-API. Native PHP nur, wenn Weblication keine Entsprechung bietet.
+Gilt für **Projektcode** unter `rules*`. **`weblication/grid5/` nicht bearbeiten** (interner Kern).
+
+In **Seiten-XML** (`rules/index.php` etc.): nach `<?php exit; ?>` nur XML/`wd:*` — keine PHP-Business-Logik einfügen; Logik in `pre.php`, Events oder XSLT-Templates.
 
 ## Substitutionen
 
 | Statt | Nutze |
 |-------|--------|
 | `$_GET` / `$_POST` | `wRequest::getParameter()`, `getParameterInt()`, `getParameterText()` |
-| XSS-kritische Eingaben | `getParameterSecure()` oder `getParameterSecureStrict()` |
+| XSS-kritisch | `getParameterSecure()` / `getParameterSecureStrict()` |
+| State-changing Actions | `wRequest::checkActionToken()` / `checkFormToken()` |
 | `file_get_contents` / `fopen` | `wReadWrite::readFile()` / `writeFile()` |
-| Datei-/Verzeichnis-Ops im CMS | `wRepository::copyDocument()`, `moveDocument()`, `createDir()`, `deleteDocument()`, … |
+| CMS Datei/Verzeichnis | `wRepository::*` |
 | `header('Location:…')` | `wResponse::redirect()` |
 | `mail()` | `wMailer::sendMailStr()` / `sendMailHtml()` |
-| `htmlspecialchars` (XML) | `wStringconverter::convertToXml()` |
-| `date()` (Ausgabe) | `wDate::formatDate()` / `displayFromTo()` |
-| Pfade bauen/ säubern | `wPathName::createPathSecure()`, `getDirFile()`, `getFileName()`, … |
-| PDO direkt | `wDB::query()` (wenn DB-Modul aktiv) |
-| XML/XPath | `wDOM::parseFile()`, `getValueOf()`, `executeXPath()` |
-| Seiten-/Objektdaten | `wDocumentData::getData()`, `getDataAsHTML()`, `setData()` |
-| Listen | `wList::createList()`, `createListArray()` |
-| Navigation | `wNavigation::createNavigationHTML()` |
+| XML escapen | `wStringconverter::convertToXml()` |
+| `date()` Ausgabe | `wDate::formatDate()` / `displayFromTo()` |
+| Pfade | `wPathName::createPathSecure()`, `getDirFile()`, … |
+| XML/XPath | `wDOM::parseFile()`, `getValueOf()` |
+| Dokumentdaten | `wDocumentData::getData()`, `getDataAsHTML()`, `setData()` |
+| Listen / Navigation | `wList::createList()`, `wNavigation::createNavigationHTML()` |
 | Cache | `wCache::clearCachePath()`, `clearCacheProject()` |
-| Globale Texte | `wTexts::getText()`, `getTextUser()` |
-| Konfiguration | `wVariables::getValue()`, `wValues::getValue()` |
+| Texte / Config | `wTexts::getText()`, `wVariables::getValue()` |
+| Responsive Bilder | `wPicture::createPicture()` (statt festem `<img>`) |
 | HTTP extern | `wNet::getUrlContent()` |
-| Auth/Session | `wUserCur::isLoggedIn()`, `isInGroup()`, `wSession::getValue()` |
-| Request-Kontext | `wEnv::getGlobalValue()`, `setGlobalValue()` |
+| Auth | `wUserCur::isLoggedIn()`, `isInGroup()` |
 
-## Beispiel Event (nach `onAfterSaveFile.wEvent.php`)
+## Event-Beispiel (`onAfterSaveFile.wEvent.php`)
 
 ```php
 $wSearch = new wSearch($eventData['projectPath'].'/weblication/project/searchs/default.wSearchBot.php');
@@ -41,4 +41,4 @@ $wSearch->addUrlToIndex($eventData['filePath'], true);
 wCache::clearCacheProject($eventData['projectPath']);
 ```
 
-Vollständige Klassenliste: https://dev.weblication.de/dev/dokumentationen/framework/
+Framework-Referenz: https://dev.weblication.de/dev/dokumentationen/framework/

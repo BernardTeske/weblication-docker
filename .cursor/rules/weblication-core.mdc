@@ -5,38 +5,41 @@ alwaysApply: true
 
 # Weblication Core (dieses Repo)
 
-## Laufzeit
+## Laufzeit & Repo
 
 - Docker: `http://localhost:8080`, `webroot` → `/var/www/html`
-- Einstieg: `webroot/index.php` → `include weblication/grid.php` → `wRequest::includePage(...)`
-- `grid.php` nur Bootstrap (Session, Autoload) – keine Business-Logik dort
+- `webroot` ist ein **Git-Submodule** (`.gitmodules`) — Commits ggf. im Submodule
+- Öffentlicher Einstieg: `webroot/index.php` → `wRequest::includePage('/rules/index.php', …)`
 
-## Projekt-Pfade (nicht `grid5/` anpassen)
+## Zwei Datei-Welten (nicht verwechseln)
+
+| Art | Beispiel | Inhalt |
+|-----|----------|--------|
+| **Seiten-XML** | `rules/index.php`, `rules/**/default.php` | `pre.php` + `exit` + `<wd:document>` mit `wd:item` (Redaktionsinhalt) |
+| **XSLT-Templates** | `rules-wGlobal/.../*.wItem.php` | `exit` + XSLT/WSL (Darstellung der Elemente) |
+
+- Globale Seitenlogik: [`rules-wGlobal/wGlobal/scripts/pre.php`](webroot/rules-wGlobal/wGlobal/scripts/pre.php) (bindet `grid.php`, Kompression, Variablen) — **nicht** in einzelnen Seiten-XML duplizieren
+- `weblication/grid.php` nur Session/Autoload — keine Business-Logik
+
+## Projekt-Pfade (`weblication/grid5/` nicht anpassen)
 
 | Pfad | Rolle |
 |------|--------|
-| `webroot/weblication/` | CMS-Kern (Framework, Backend) – nur lesen |
-| `webroot/rules/` | Inhaltsprojekt (Seiten, Navigation, Events) |
-| `webroot/rules-wGlobal/` | Layout: Templates, `design.css`, Weblics |
-| `webroot/rules-wAssets/` | Medien/Assets |
+| `webroot/weblication/` | CMS-Kern — nur lesen |
+| `webroot/rules/` | Inhalt: Seiten-XML, Navigation, Events, `wProject.php` |
+| `webroot/rules-wGlobal/` | Layout: Templates, `design.css`, `pre.php` |
+| `webroot/rules-wAssets/` | Medien |
 
-Layout-Templates: `rules-wGlobal/wGlobal/layout/templates/`  
-System-Parameter: `misc/standard.wParams.php` (`$wGlobalProjectPath` = `/rules-wGlobal`)
+System-Parameter: `rules-wGlobal/wGlobal/layout/templates/misc/standard.wParams.php` (`$wGlobalProjectPath` = `/rules-wGlobal`)
+
+Inhaltliche Konfiguration (kein XSLT): `*.wNavigation.php`, `*.wTexts.php`, `*.wVariables.php` unter `rules/wGlobal/content/`
 
 ## Framework-API
 
-- Öffentliche Klassen: Präfix `w*` (Autoload aus `grid5/framework/php/`)
-- **Nicht** `g*`-Interna aus `grid5/lib/php/` direkt nutzen
-- Projektpfade: `wProjectCur::getPath()`, `getPathLayout()`, `getPathGlobal()`, `getPathAssets()`, `getPathContent()`
+- Öffentlich: Präfix `w*` (`grid5/framework/php/`)
+- **Nicht** `g*`-Interna aus `grid5/lib/php/`
+- Pfade: `wProjectCur::getPath()`, `getPathLayout()`, `getPathGlobal()`, `getPathAssets()`, `getPathContent()`
 
-## Standalone-PHP
+Standalone/Cron: `include($_SERVER['DOCUMENT_ROOT'].'/weblication/grid.php');`
 
-```php
-include($_SERVER['DOCUMENT_ROOT'].'/weblication/grid.php');
-// danach wRequest, wRepository, …
-```
-
-## Doku
-
-- https://dev.weblication.de
-- https://dev.weblication.de/dev/dokumentationen/framework/
+Doku: https://dev.weblication.de/dev/dokumentationen/framework/
