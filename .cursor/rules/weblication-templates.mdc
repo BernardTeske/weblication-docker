@@ -1,0 +1,48 @@
+---
+description: Weblication XSLT/WSL-Templates (wDocument, wItem, wGlobal, wEvent)
+globs: webroot/**/*.w{Document,Item,Global,Filelist,Event}.php
+alwaysApply: false
+---
+
+# Weblication Templates (XSLT + WSL)
+
+## Dateitypen
+
+- `*.wDocument.php` – Seiten-Layout (`default`, `blank`, `global`, …)
+- `*.wGlobal.php` – Header, Footer, `htmlHead`, `content`
+- `*.wItem.php` – Strukturelemente (Weblics)
+- `*.wFilelist.php` – Listen
+- `*.wEvent.php` – Ereignisse (`onAfterSaveFile`, …)
+
+## Pflicht
+
+- Zeile 2: `<?php exit; ?>` – Datei ist XSLT, kein direkt ausführbares PHP
+- Namespaces: `wd:`, `wsl:`, `wslPre:`, `php:` (wie in `global.wDocument.php`)
+- PHP nur in `<wsl:php>` oder `php:function()` / `php:functionString()`
+- Neue Items an bestehende Vorlagen anlehnen (`link.standard`, `container.box`, …)
+
+## Includes & Inhalt
+
+```xml
+<wslPre:includeXsltGlobals project="/rules-wGlobal"/>
+<wslPre:includeXsltObjects project="/rules-wGlobal" _object="$WSLPRE[wObjectType]"/>
+<wslPre:includeXsltItems project="/rules-wGlobal" useIndex="1"/>
+```
+
+- Inhaltsgruppen: `wd:group[@id='content1']` … `content9`
+- Elemente: `wd:item[@type='…']` mit `uid`, `onlineStatus`
+- Daten: `wd:fragment[@id='…']`
+- Sichtbarkeit: `php:function('wOutput::isViewableItem', ., $wViewMode)`
+
+## Events
+
+XSLT-Hülle mit `wsl:php`-Blöcken `scriptPre`, `scriptMain`, `scriptPost`; `$eventData` / `$eventParam` aus Envelope.
+
+## Redaktion
+
+- Pflegetags: `<!-- web:text:start … -->`, `<!-- web:item:start … -->`
+- Bedingungen bevorzugt als WSL-Tags (`ifIsLoggedIn`, `ifValue`, `ifDocumentExists`) statt langem PHP
+
+## Neues Layout
+
+Immer `standard.wParams.php` und passendes `wDocument.php` prüfen (`$wCSSPath`, `$wPageLayout`).

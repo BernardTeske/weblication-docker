@@ -1,0 +1,44 @@
+---
+description: Weblication PHP-Framework statt nativer PHP-Funktionen
+globs: webroot/**/*.php
+alwaysApply: false
+---
+
+# Weblication PHP-Framework (w* statt native PHP)
+
+Bevorzuge die öffentliche `w*`-API. Native PHP nur, wenn Weblication keine Entsprechung bietet.
+
+## Substitutionen
+
+| Statt | Nutze |
+|-------|--------|
+| `$_GET` / `$_POST` | `wRequest::getParameter()`, `getParameterInt()`, `getParameterText()` |
+| XSS-kritische Eingaben | `getParameterSecure()` oder `getParameterSecureStrict()` |
+| `file_get_contents` / `fopen` | `wReadWrite::readFile()` / `writeFile()` |
+| Datei-/Verzeichnis-Ops im CMS | `wRepository::copyDocument()`, `moveDocument()`, `createDir()`, `deleteDocument()`, … |
+| `header('Location:…')` | `wResponse::redirect()` |
+| `mail()` | `wMailer::sendMailStr()` / `sendMailHtml()` |
+| `htmlspecialchars` (XML) | `wStringconverter::convertToXml()` |
+| `date()` (Ausgabe) | `wDate::formatDate()` / `displayFromTo()` |
+| Pfade bauen/ säubern | `wPathName::createPathSecure()`, `getDirFile()`, `getFileName()`, … |
+| PDO direkt | `wDB::query()` (wenn DB-Modul aktiv) |
+| XML/XPath | `wDOM::parseFile()`, `getValueOf()`, `executeXPath()` |
+| Seiten-/Objektdaten | `wDocumentData::getData()`, `getDataAsHTML()`, `setData()` |
+| Listen | `wList::createList()`, `createListArray()` |
+| Navigation | `wNavigation::createNavigationHTML()` |
+| Cache | `wCache::clearCachePath()`, `clearCacheProject()` |
+| Globale Texte | `wTexts::getText()`, `getTextUser()` |
+| Konfiguration | `wVariables::getValue()`, `wValues::getValue()` |
+| HTTP extern | `wNet::getUrlContent()` |
+| Auth/Session | `wUserCur::isLoggedIn()`, `isInGroup()`, `wSession::getValue()` |
+| Request-Kontext | `wEnv::getGlobalValue()`, `setGlobalValue()` |
+
+## Beispiel Event (nach `onAfterSaveFile.wEvent.php`)
+
+```php
+$wSearch = new wSearch($eventData['projectPath'].'/weblication/project/searchs/default.wSearchBot.php');
+$wSearch->addUrlToIndex($eventData['filePath'], true);
+wCache::clearCacheProject($eventData['projectPath']);
+```
+
+Vollständige Klassenliste: https://dev.weblication.de/dev/dokumentationen/framework/

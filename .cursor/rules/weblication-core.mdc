@@ -1,0 +1,42 @@
+---
+description: Weblication CMS – Projektstruktur, Bootstrap und öffentliche Framework-API
+alwaysApply: true
+---
+
+# Weblication Core (dieses Repo)
+
+## Laufzeit
+
+- Docker: `http://localhost:8080`, `webroot` → `/var/www/html`
+- Einstieg: `webroot/index.php` → `include weblication/grid.php` → `wRequest::includePage(...)`
+- `grid.php` nur Bootstrap (Session, Autoload) – keine Business-Logik dort
+
+## Projekt-Pfade (nicht `grid5/` anpassen)
+
+| Pfad | Rolle |
+|------|--------|
+| `webroot/weblication/` | CMS-Kern (Framework, Backend) – nur lesen |
+| `webroot/rules/` | Inhaltsprojekt (Seiten, Navigation, Events) |
+| `webroot/rules-wGlobal/` | Layout: Templates, `design.css`, Weblics |
+| `webroot/rules-wAssets/` | Medien/Assets |
+
+Layout-Templates: `rules-wGlobal/wGlobal/layout/templates/`  
+System-Parameter: `misc/standard.wParams.php` (`$wGlobalProjectPath` = `/rules-wGlobal`)
+
+## Framework-API
+
+- Öffentliche Klassen: Präfix `w*` (Autoload aus `grid5/framework/php/`)
+- **Nicht** `g*`-Interna aus `grid5/lib/php/` direkt nutzen
+- Projektpfade: `wProjectCur::getPath()`, `getPathLayout()`, `getPathGlobal()`, `getPathAssets()`, `getPathContent()`
+
+## Standalone-PHP
+
+```php
+include($_SERVER['DOCUMENT_ROOT'].'/weblication/grid.php');
+// danach wRequest, wRepository, …
+```
+
+## Doku
+
+- https://dev.weblication.de
+- https://dev.weblication.de/dev/dokumentationen/framework/
