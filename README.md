@@ -42,7 +42,7 @@ chmod +x install-weblication.sh
 Das Skript fragt nacheinander:
 
 1. **Projektname** (z. B. `meinseseite`) — wird als `container_name` in der `docker-compose.yml` gesetzt
-2. **Zielverzeichnis** — standardmäßig das **aktuelle Verzeichnis**; alternativ `~/webprojects/<projektname>` oder ein frei wählbarer Pfad
+2. **Zielverzeichnis** — standardmäßig **`<aktuelles-verzeichnis>/<projektname>`**; alternativ `~/webprojects/<projektname>` oder ein frei wählbarer Pfad
 3. Startet danach `docker compose up -d --build`, wartet auf das Setup und öffnet den Browser unter:
 
 ```

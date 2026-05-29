@@ -147,14 +147,15 @@ prompt_project_name() {
 }
 
 prompt_install_location() {
-  local cwd webprojects_path choice custom
+  local cwd webprojects_path local_path choice custom
 
   cwd="$(pwd)"
+  local_path="${cwd}/${PROJECT_NAME}"
   webprojects_path="${HOME}/webprojects/${PROJECT_NAME}"
 
-  prompt_input choice "In aktuelles Verzeichnis installieren ($cwd)? [J/n]: "
+  prompt_input choice "In ${local_path} installieren? [J/n]: "
   if [[ -z "$choice" || "$choice" =~ ^[jJyY]$ ]]; then
-    TARGET_DIR="$cwd"
+    TARGET_DIR="$local_path"
     return
   fi
 
@@ -191,14 +192,9 @@ clone_repository() {
     error "Zielverzeichnis ist nicht leer: $target"
   fi
 
-  if [[ "$target" == "$(pwd)" ]]; then
-    info "Klone Repository in aktuelles Verzeichnis …"
-    git clone --depth 1 "$repo_url" .
-  else
-    mkdir -p "$(dirname "$target")"
-    info "Klone Repository …"
-    git clone --depth 1 "$repo_url" "$target"
-  fi
+  mkdir -p "$(dirname "$target")"
+  info "Klone Repository …"
+  git clone --depth 1 "$repo_url" "$target"
 
   ok "Repository geklont."
 }
