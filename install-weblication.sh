@@ -179,7 +179,7 @@ clone_repository() {
 }
 
 main() {
-  local script_dir repo_url
+  local repo_url
 
   require_command git
   require_command docker
@@ -187,8 +187,13 @@ main() {
 
   docker compose version >/dev/null 2>&1 || error "Docker Compose ist nicht verfügbar (docker compose)."
 
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  repo_url="$(detect_repo_url "$script_dir")"
+  # Bei curl | bash ist BASH_SOURCE[0] leer — dann Default-Repo-URL nutzen
+  local script_source="${BASH_SOURCE[0]:-}"
+  if [[ -n "$script_source" && -f "$script_source" ]]; then
+    repo_url="$(detect_repo_url "$(cd "$(dirname "$script_source")" && pwd)")"
+  else
+    repo_url="$REPO_URL_DEFAULT"
+  fi
 
   echo
   info "Weblication Docker Installation"
