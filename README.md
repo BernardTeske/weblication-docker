@@ -204,6 +204,8 @@ Dieses Docker-Setup steht unter der [MIT-Lizenz](LICENSE).
 
 **Weblication CMS** selbst ist ein kostenpflichtiges Produkt — siehe [Lizenzierung](#-lizenzierung) und [Weblication Dokumentation](https://help.weblication.de).
 
+**Weblication-Partner:** [Bernard Teske](https://www.bernardteske.de) — für Lizenzen und den Erwerb von Weblication CMS wenden Sie sich direkt an ihn.
+
 ## 🤝 Support & Autor
 
 Bei Problemen mit diesem Docker-Setup:
@@ -212,14 +214,15 @@ Bei Problemen mit diesem Docker-Setup:
 2. Health-Check-Status prüfen
 3. Sicherstellen, dass Port 8080 frei ist
 
-**Autor:** [Bernard Teske](https://www.bernardteske.de)
+**Autor:** [Bernard Teske](https://www.bernardteske.de) — Weblication-Partner
 
 ## 💰 Lizenzierung (Weblication CMS)
 
-**Wichtiger Hinweis:** Weblication ist ein **kostenpflichtiges CMS**. 
+**Wichtiger Hinweis:** Weblication ist ein **kostenpflichtiges CMS**.
 
-- **Probeversion**: Kann für Testzwecke verwendet werden
+- **Probeversion**: Kann für Testzwecke verwendet werden (wird beim Docker-Start automatisch eingerichtet)
 - **Vollversion**: Erfordert eine gültige Lizenz
+- **Lizenz erwerben**: Als Weblication-Partner berate ich Sie gerne — [Bernard Teske](https://www.bernardteske.de)
 - **Layouts programmieren lassen**: Professionelle Entwicklung verfügbar
 - **Weblics und Erweiterungen**: Individuelle Anpassungen möglich
 
@@ -227,4 +230,4 @@ Bei Problemen mit diesem Docker-Setup:
 
 Für **Lizenzierung**, **Layout-Entwicklung**, **Weblics** und **Erweiterungen**:
 
-**[Bernard Teske — www.bernardteske.de](https://www.bernardteske.de)**
+**[Bernard Teske — Weblication-Partner — www.bernardteske.de](https://www.bernardteske.de)**
