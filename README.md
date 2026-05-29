@@ -16,26 +16,62 @@ Eine vollständige Docker-Installation für das Weblication CMS mit Apache, PHP 
 
 - Docker
 - Docker Compose
+- Git (für das Install-Skript)
+- curl (für das Install-Skript)
 - Mindestens 2GB freier RAM
 - Mindestens 5GB freier Speicherplatz
 
 ## 🛠️ Installation
 
-### 1. Repository klonen
+### Schnellinstallation (empfohlen)
+
+Mit dem interaktiven Install-Skript klonen, konfigurieren und starten — in einem Schritt:
+
 ```bash
-git clone <repository-url>
+curl -fsSL https://raw.githubusercontent.com/BernardTeske/weblication-docker/main/install-weblication.sh | bash
+```
+
+Alternativ erst herunterladen und prüfen:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/BernardTeske/weblication-docker/main/install-weblication.sh -o install-weblication.sh
+chmod +x install-weblication.sh
+./install-weblication.sh
+```
+
+Das Skript fragt nacheinander:
+
+1. **Projektname** (z. B. `meinseseite`) — wird als `container_name` in der `docker-compose.yml` gesetzt
+2. **Zielverzeichnis** — standardmäßig das **aktuelle Verzeichnis**; alternativ `~/webprojects/<projektname>` oder ein frei wählbarer Pfad
+3. Startet danach `docker compose up -d --build`, wartet auf das Setup und öffnet den Browser unter:
+
+```
+http://localhost:8080/wSetup.php
+```
+
+**Hinweise:**
+
+- Das Zielverzeichnis muss leer sein (außer es existiert bereits als Git-Repository desselben Projekts).
+- Bei `curl | bash` wird das Repository von GitHub geklont — unabhängig davon, woher das Skript geladen wurde.
+- Port **8080** ist fest vorgegeben; bei Konflikten muss er in der `docker-compose.yml` angepasst werden.
+
+### Manuelle Installation
+
+#### 1. Repository klonen
+```bash
+git clone https://github.com/BernardTeske/weblication-docker.git
 cd weblication-docker
 ```
 
-### 2. Container starten
+#### 2. Container starten
 ```bash
-docker-compose up -d
+docker compose up -d --build
 ```
 
-### 3. Auf Weblication zugreifen
+#### 3. Auf Weblication zugreifen
 Öffnen Sie Ihren Browser und navigieren Sie zu:
 ```
-http://localhost:8080
+http://localhost:8080/wSetup.php
 ```
 
 ## 🔧 Konfiguration
@@ -54,6 +90,7 @@ http://localhost:8080
 
 ```
 weblication-docker/
+├── install-weblication.sh  # Interaktives Install-Skript
 ├── docker-compose.yml      # Docker Compose Konfiguration
 ├── Dockerfile             # Container Build-Definition
 ├── entrypoint.sh          # Container-Startup-Skript
@@ -93,25 +130,25 @@ Der Container verfügt über integrierte Health Checks:
 ### Container startet nicht
 ```bash
 # Logs anzeigen
-docker-compose logs weblication
+docker compose logs weblication
 
 # Container neu starten
-docker-compose restart weblication
+docker compose restart weblication
 ```
 
 ### Weblication lädt nicht
 ```bash
 # Container-Status prüfen
-docker-compose ps
+docker compose ps
 
-# Health Check Status
-docker inspect weblication20 | grep Health -A 10
+# Health Check Status (Container-Name = gewählter Projektname)
+docker inspect <projektname> | grep Health -A 10
 ```
 
 ### Berechtigungsprobleme
 ```bash
 # Berechtigungen korrigieren
-docker-compose exec weblication chown -R www-data:www-data /var/www/html
+docker compose exec weblication chown -R www-data:www-data /var/www/html
 ```
 
 ## 🔄 Wartung
@@ -119,16 +156,16 @@ docker-compose exec weblication chown -R www-data:www-data /var/www/html
 ### Container aktualisieren
 ```bash
 # Neues Image bauen
-docker-compose build --no-cache
+docker compose build --no-cache
 
 # Container neu starten
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Logs bereinigen
 ```bash
-# Container-Logs löschen
-docker-compose logs --tail=100 weblication
+# Container-Logs anzeigen
+docker compose logs --tail=100 weblication
 ```
 
 ## 📝 Anpassungen
