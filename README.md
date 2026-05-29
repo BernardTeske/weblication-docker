@@ -28,13 +28,13 @@ Eine vollständige Docker-Installation für das Weblication CMS mit Apache, PHP 
 Mit dem interaktiven Install-Skript klonen, konfigurieren und starten — in einem Schritt:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BernardTeske/weblication-docker/main/install-weblication.sh | bash
+curl -fsSL https://cdn.jsdelivr.net/gh/BernardTeske/weblication-docker@main/install-weblication.sh | bash
 ```
 
 Alternativ erst herunterladen und prüfen:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BernardTeske/weblication-docker/main/install-weblication.sh -o install-weblication.sh
+curl -fsSL https://cdn.jsdelivr.net/gh/BernardTeske/weblication-docker@main/install-weblication.sh -o install-weblication.sh
 chmod +x install-weblication.sh
 ./install-weblication.sh
 ```
