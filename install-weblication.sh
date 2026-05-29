@@ -41,6 +41,15 @@ detect_repo_url() {
   printf '%s\n' "$REPO_URL_DEFAULT"
 }
 
+resolve_repo_url() {
+  local script_name="${0##*/}"
+  if [[ "$script_name" == "install-weblication.sh" && -f "$0" ]]; then
+    detect_repo_url "$(cd "$(dirname "$0")" && pwd)"
+  else
+    printf '%s\n' "$REPO_URL_DEFAULT"
+  fi
+}
+
 validate_project_name() {
   local name="$1"
   [[ "$name" =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]*$ ]] || return 1
@@ -187,13 +196,7 @@ main() {
 
   docker compose version >/dev/null 2>&1 || error "Docker Compose ist nicht verfügbar (docker compose)."
 
-  # Bei curl | bash ist BASH_SOURCE[0] leer — dann Default-Repo-URL nutzen
-  local script_source="${BASH_SOURCE[0]:-}"
-  if [[ -n "$script_source" && -f "$script_source" ]]; then
-    repo_url="$(detect_repo_url "$(cd "$(dirname "$script_source")" && pwd)")"
-  else
-    repo_url="$REPO_URL_DEFAULT"
-  fi
+  repo_url="$(resolve_repo_url)"
 
   echo
   info "Weblication Docker Installation"
