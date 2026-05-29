@@ -91,6 +91,7 @@ http://localhost:8080/wSetup.php
 ```
 weblication-docker/
 ├── install-weblication.sh  # Interaktives Install-Skript
+├── LICENSE                 # MIT-Lizenz (nur dieses Docker-Setup)
 ├── docker-compose.yml      # Docker Compose Konfiguration
 ├── Dockerfile             # Container Build-Definition
 ├── entrypoint.sh          # Container-Startup-Skript
@@ -197,14 +198,23 @@ environment:
 - [Docker Dokumentation](https://docs.docker.com)
 - [Docker Compose Dokumentation](https://docs.docker.com/compose/)
 
-## 🤝 Support
+## 📄 Lizenz
 
-Bei Problemen oder Fragen:
-1. Überprüfen Sie die Container-Logs
-2. Prüfen Sie die Health Check-Status
-3. Stellen Sie sicher, dass alle Ports verfügbar sind
+Dieses Docker-Setup steht unter der [MIT-Lizenz](LICENSE).
 
-## 💰 Lizenzierung
+**Weblication CMS** selbst ist ein kostenpflichtiges Produkt — siehe [Lizenzierung](#-lizenzierung) und [Weblication Dokumentation](https://help.weblication.de).
+
+## 🤝 Support & Autor
+
+Bei Problemen mit diesem Docker-Setup:
+
+1. Container-Logs prüfen (`docker compose logs weblication`)
+2. Health-Check-Status prüfen
+3. Sicherstellen, dass Port 8080 frei ist
+
+**Autor:** [Bernard Teske](https://www.bernardteske.de)
+
+## 💰 Lizenzierung (Weblication CMS)
 
 **Wichtiger Hinweis:** Weblication ist ein **kostenpflichtiges CMS**. 
 
@@ -213,13 +223,8 @@ Bei Problemen oder Fragen:
 - **Layouts programmieren lassen**: Professionelle Entwicklung verfügbar
 - **Weblics und Erweiterungen**: Individuelle Anpassungen möglich
 
-### 🛠️ Professionelle Unterstützung
+### Professionelle Unterstützung
 
-Für **Lizenzierung**, **Layout-Entwicklung**, **Weblics** und **Erweiterungen** wenden Sie sich an:
+Für **Lizenzierung**, **Layout-Entwicklung**, **Weblics** und **Erweiterungen**:
 
-**Bernard Teske**  
-🌐 [www.bernardteske.de](https://www.bernardteske.de)
-
-## 📄 Projekt-Lizenz
-
-Dieses Docker-Setup ist für die lokale Entwicklung und den produktiven Einsatz von Weblication CMS gedacht.
+**[Bernard Teske — www.bernardteske.de](https://www.bernardteske.de)**

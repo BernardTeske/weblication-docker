@@ -7,9 +7,11 @@ alwaysApply: true
 
 ## Laufzeit & Repo
 
-- Docker: `http://localhost:8080`, `webroot` → `/var/www/html`
-- `webroot` ist ein **Git-Submodule** (`.gitmodules`) — Commits ggf. im Submodule
-- Öffentlicher Einstieg: `webroot/index.php` → `wRequest::includePage('/rules/index.php', …)`
+- Docker: `http://localhost:8080`, `webroot/` → `/var/www/html` (Volume-Mount)
+- Erststart: leerer `webroot/` → `entrypoint.sh` entpackt `wSetup.zip` → Setup unter `/wSetup.php`
+- Nach Installation: öffentlicher Einstieg `webroot/index.php` → `wRequest::includePage('/rules/index.php', …)`
+- `webroot/` ist **gitignored** — Projektinhalt liegt lokal, nicht in diesem Docker-Repo
+- Installation: `./install-weblication.sh` oder `docker compose up -d --build`
 
 ## Zwei Datei-Welten (nicht verwechseln)
 
