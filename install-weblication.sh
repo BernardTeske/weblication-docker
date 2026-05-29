@@ -10,6 +10,22 @@ ok()    { printf '\033[1;32m✓\033[0m %s\n' "$*"; }
 warn()  { printf '\033[1;33m!\033[0m %s\n' "$*" >&2; }
 error() { printf '\033[1;31m✗\033[0m %s\n' "$*" >&2; exit 1; }
 
+prompt_input() {
+  local var_name="$1"
+  local prompt_text="$2"
+  local value=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "$prompt_text" value
+  elif [[ -r /dev/tty ]]; then
+    read -r -p "$prompt_text" value </dev/tty
+  else
+    error "Kein interaktives Terminal. Bitte Skript herunterladen und ausführen: ./install-weblication.sh"
+  fi
+
+  printf -v "$var_name" '%s' "$value"
+}
+
 require_command() {
   command -v "$1" >/dev/null 2>&1 || error "'$1' ist nicht installiert oder nicht im PATH."
 }
@@ -113,7 +129,7 @@ set_container_name() {
 prompt_project_name() {
   local name=""
   while true; do
-    read -r -p "Projektname (z. B. meinseseite): " name
+    prompt_input name "Projektname (z. B. meinseseite): "
     name="${name// /}"
 
     if [[ -z "$name" ]]; then
@@ -136,20 +152,20 @@ prompt_install_location() {
   cwd="$(pwd)"
   webprojects_path="${HOME}/webprojects/${PROJECT_NAME}"
 
-  read -r -p "In aktuelles Verzeichnis installieren ($cwd)? [J/n]: " choice
+  prompt_input choice "In aktuelles Verzeichnis installieren ($cwd)? [J/n]: "
   if [[ -z "$choice" || "$choice" =~ ^[jJyY]$ ]]; then
     TARGET_DIR="$cwd"
     return
   fi
 
-  read -r -p "~/webprojects/${PROJECT_NAME} verwenden? [J/n]: " choice
+  prompt_input choice "~/webprojects/${PROJECT_NAME} verwenden? [J/n]: "
   if [[ -z "$choice" || "$choice" =~ ^[jJyY]$ ]]; then
     TARGET_DIR="$webprojects_path"
     return
   fi
 
   while true; do
-    read -r -p "Anderes Zielverzeichnis: " custom
+    prompt_input custom "Anderes Zielverzeichnis: "
     custom="$(expand_path "$custom")"
     if [[ -n "$custom" ]]; then
       TARGET_DIR="$custom"
@@ -164,7 +180,7 @@ clone_repository() {
 
   if [[ -d "$target/.git" ]]; then
     warn "Verzeichnis existiert bereits und ist ein Git-Repository."
-    read -r -p "Trotzdem fortfahren und nur container_name aktualisieren? [j/N]: " reuse
+    prompt_input reuse "Trotzdem fortfahren und nur container_name aktualisieren? [j/N]: "
     if [[ ! "$reuse" =~ ^[jJyY]$ ]]; then
       error "Installation abgebrochen."
     fi
