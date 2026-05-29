@@ -1,6 +1,0 @@
-[submodule "it4m.eu"]
-	path = it4m.eu
-	url = git@github.com:BernardTeske/it4m.eu.git
-[submodule "webroot"]
-	path = webroot
-	url = git@github.com:BernardTeske/it4m.eu.git
