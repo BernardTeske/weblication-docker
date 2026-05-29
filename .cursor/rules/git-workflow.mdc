@@ -1,0 +1,11 @@
+---
+description: Git-Workflow — keine ungefragten Commits oder Pushes
+alwaysApply: true
+---
+
+# Git-Workflow
+
+- **Keine Commits** ohne explizite Aufforderung des Nutzers
+- **Keine Pushes** ohne explizite Aufforderung des Nutzers
+- Änderungen am Code vornehmen ist ok; am Ende kurz mitteilen, was geändert wurde und dass der Nutzer selbst committen/pushen kann, wenn gewünscht
+- Auch nach abgeschlossenen Tasks nicht proaktiv committen oder pushen
