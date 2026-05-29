@@ -1,6 +1,5 @@
 /webroot
 /webroot-test
-/.codegraph
-.codegraph
+.codegraph/
 .gitmodules
 /.gitmodules
