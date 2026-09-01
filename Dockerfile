@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM php:8.3-apache-bookworm
 
 # --- Apache ---
 RUN a2enmod headers rewrite \
@@ -24,7 +24,10 @@ RUN set -eux; \
   } > /etc/apache2/sites-available/000-default.conf
 
 # --- Systempakete / Libs für PHP-Extensions ---
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# HTTP-Mirror (deb.debian.org) liefert hier teils korrupte .debs → Hash Sum mismatch.
+# HTTPS umgeht das; betrifft Netzwerk/Mirror, nicht Intel vs. Apple Silicon.
+RUN sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list.d/debian.sources \
+ && apt-get update && apt-get install -y --no-install-recommends \
     curl unzip ca-certificates \
     pkg-config g++ \
     libicu-dev \

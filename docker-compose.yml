@@ -5,7 +5,7 @@ services:
       args:
         # Optional: andere Quelle für wSetup.zip
         WSETUP_URL: https://dev.weblication.de/dev/downloads/wSetup.zip
-    container_name: bookingcal
+    container_name: wissenimwandel
     ports:
       - "8080:80"
     volumes:
