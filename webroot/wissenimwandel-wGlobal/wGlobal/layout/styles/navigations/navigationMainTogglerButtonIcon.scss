@@ -1,0 +1,132 @@
+/* Menü-Auflapper Schaltfläche mit Icon */
+
+@mixin navigationMainTogglerButtonIcon {
+  
+  /* Allgemeine Einstellungen */
+  
+  $colorIcon:var(--baseColorWhite); /* Farbe des Symbols */
+
+  /* Form aus Figma (Node 11:67): "Kiesel" mit individuellen Ecken, 20x20.
+     Das SVG ist eine reine Maskenform (schwarz), die Farbe kommt über background-color.
+     Als Datei eingebunden, kein Data-URL: der SCSS-Compiler schneidet am Semikolon. */
+  $backgroundColorDefault:var(--backgroundColorButton); /* Hintergrundfarbe Standard */
+  $backgroundColorHover:var(--backgroundColorButtonHover); /* Hintergrundfarbe beim Überfahren und bei offenem Menü */
+
+  $lineWidth:4px; /* Dicke der Streifen */
+  $lineLength:20px; /* Länge der Streifen */
+  
+  #navigationMainToggler {
+    display:flex;
+    flex-direction:row-reverse;
+    margin:0;
+    cursor:pointer;
+    height:32px;
+    width:32px;
+    position:relative;
+    
+    -w-add-data:'keepsubmenuesopenonclose=1';         
+
+    .no-weditor & {
+      z-index:100001;          
+    }
+
+    > div:first-child {
+      display:none;
+    }
+
+    > div:last-child {
+      position:absolute;
+      top:0;
+      left:0;
+      width:32px;
+      height:32px;
+
+      /* Form-Layer: farbiger Kasten exakt in der Figma-Kontur */
+      &:before {
+        content:'';
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-color:$backgroundColorDefault;
+        -webkit-mask-image:url("#{$wGlobalProjectPath}/wGlobal/layout/images/icons/nav-opener.svg");
+        mask-image:url("#{$wGlobalProjectPath}/wGlobal/layout/images/icons/nav-opener.svg");
+        -webkit-mask-repeat:no-repeat;
+        mask-repeat:no-repeat;
+        -webkit-mask-position:center;
+        mask-position:center;
+        -webkit-mask-size:contain;
+        mask-size:contain;
+        transition:background-color 0.3s linear;
+      }
+
+      /* Streifen darüber, sauber in der Mitte zentriert */
+      > div:after,
+      > div:before,
+      > div {
+        content:'';
+        position:absolute;
+        top:50%;
+        left:50%;
+        z-index:1;
+        width:$lineLength;
+        height:$lineWidth;
+        margin:($lineWidth / -2) 0 0 ($lineLength / -2);
+        background:$colorIcon;
+        border-radius:($lineWidth / 2);
+        transition:transform 0.3s ease, opacity 0.1s linear 0.1s;
+      }
+
+      /* oberer Streifen */
+      > div:before {
+        transform:translateY(-6px);
+      }
+
+      /* unterer Streifen */
+      > div:after {
+        transform:translateY(6px);
+      }
+
+      /* mittlerer Streifen */
+      > div {
+        z-index:2;
+      }
+
+      /* Kreuz-Linien: die Streifen selbst liegen als ::before/::after am mittleren
+         Element, damit sie im offenen Zustand nicht mit dessen Ausblenden kollidieren */
+      > div:before,
+      > div:after {
+        z-index:2;
+      }
+    }
+
+    /* Geöffnet: Kreuz, alle Streifen exakt über der Mitte */
+    &.open > div:last-child > div {
+      &:before {
+        transform:rotate(45deg);
+      }
+
+      &:after {
+        transform:rotate(-45deg);
+      }
+
+      /* Mittlerer Streifen blendet aus, die beiden anderen liegen auf derselben
+         Basislinie - zusammen ergibt das ein sauberes, gleichmäßiges Kreuz */
+      & {
+        background-color:transparent;
+      }
+    }
+  }
+
+  @media (hover:hover) {
+    #navigationMainToggler:hover > div:last-child:before {
+      background-color:$backgroundColorHover;
+    }
+  }
+
+  #navigationMainToggler:active > div:last-child:before,
+  #navigationMainToggler.open > div:last-child:before {
+    background-color:$backgroundColorHover;
+  }
+}
