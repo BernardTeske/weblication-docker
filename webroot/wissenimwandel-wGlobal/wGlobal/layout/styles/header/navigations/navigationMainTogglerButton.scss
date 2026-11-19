@@ -12,8 +12,8 @@
   $colorText:$colorIcon; /* Farbe des Textes */
 
   /* Form aus Figma (Node 11:67): "Kiesel" mit individuellen Ecken, 20x20.
-     Das SVG ist eine reine Maskenform (schwarz) - die Farbe kommt über background-color. */
-  $maskImage:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTIwLDkuODk5M2MwLDMuOTA3OS0uNzE0OSw2LjU2NjktMi4xNTU4LDcuOTgyNy0xLjQzNTQsMS40MTU4LTQuMDgyNywyLjExOC03Ljk0MTksMi4xMTgtMy43ODY3LDAtNi4zODkzLS42ODQ5LTcuNzkxMS0yLjA2NjItMS40MDc0LTEuMzgxMy0yLjExMTEtMy45OTQyLTIuMTExMS03LjgzMzFDMCw2LjE5ODYuNzIwNSwzLjUzMzgsMi4xNjE0LDIuMTE4LDMuNTk2OC43MDc5LDYuMjQ0MSwwLDEwLjA5NzcsMGMzLjc5MjIsMCw2LjM4OTMuNjkwNiw3Ljc5NjcsMi4wNzE5LDEuNDA3NCwxLjM4MTMsMi4xMDU2LDMuOTg4NSwyLjEwNTYsNy44MjczWiIvPgo8L3N2Zz4='); /* Maskenform (SVG, inline als Data-URL, damit die Maske nicht in wImage.php aufläuft) */
+     Das SVG ist eine reine Maskenform (schwarz), die Farbe kommt über background-color.
+     Als Datei eingebunden, kein Data-URL: der SCSS-Compiler schneidet am Semikolon. */
   $backgroundColorDefault:var(--backgroundColorButton); /* Hintergrundfarbe Standard */
   $backgroundColorHover:var(--backgroundColorButtonHover); /* Hintergrundfarbe beim Überfahren und bei offenem Menü */
 
@@ -65,8 +65,8 @@
         width:100%;
         height:100%;
         background-color:$backgroundColorDefault;
-        -webkit-mask-image:$maskImage;
-        mask-image:$maskImage;
+        -webkit-mask-image:url("#{$wGlobalProjectPath}/wGlobal/layout/images/icons/nav-opener.svg");
+        mask-image:url("#{$wGlobalProjectPath}/wGlobal/layout/images/icons/nav-opener.svg");
         -webkit-mask-repeat:no-repeat;
         mask-repeat:no-repeat;
         -webkit-mask-position:center;
