@@ -4,8 +4,8 @@
 <wd:document xmlns:wsl="http://weblication.de/5.0/wsl" xmlns:wd="http://weblication.de/5.0/wd" version="1.0" type="page.standard">
   <wd:extension type="weblication" version="5.0" uid="82ef661cf9e10523e41bd1b50431c627">
     <wd:meta>
-      <wd:title>adadsad</wd:title>
-      <wd:description/>
+      <wd:title>Methode: Wissenslandkarte &amp; Maßnahmenplan</wd:title>
+      <wd:description>In vier Schritten zum Wissenstransfer: Vorgespräch, zwei Interviews zur Wissenslandkarte, Maßnahmenplan, Feedback. Klar planbar, ohne Vorarbeit.</wd:description>
       <wd:keywords/>
       <wd:thumbnail src="/wissenimwandel-wAssets/img/og-img/og-img.png" area=""/>
       <wd:categories/>
@@ -847,7 +847,7 @@ HTML;
               <wd:fragment id="title" type="char.text"/>
               <wd:fragment id="display" type="char.display"/>
               <wd:fragment id="layout">0</wd:fragment>
-              <wd:fragment id="text" type="text.standard"><![CDATA[<p>Auf Grundlage der Wissenslandkarte erarbeiten wir gemeinsam [mit wem? z. B. „mit der Wissensträgerin oder dem Wissensträger und der Nachfolge“] einen Maßnahmenplan. Darin steht, welches Wissen auf welchem Weg an wen übergeben wird.</p>]]></wd:fragment>
+              <wd:fragment id="text" type="text.standard"><![CDATA[<p>Auf Grundlage der Wissenslandkarte erarbeiten wir gemeinsam einen Maßnahmenplan. Darin steht, welches Wissen auf welchem Weg an wen übergeben wird.</p>]]></wd:fragment>
               <wd:fragment id="layoutListStyle" type="char.default"/>
               <wd:fragment id="author" type="char.default"/>
               <wd:fragment id="layoutColor" type="char.default"/>
