@@ -1,0 +1,473 @@
+/* Ergänzende Styles */
+
+/* Hero-Bereich Startseite (Figma "Anfangsseite 1440px" Node 26:116,
+   mobil "Anfangsseite (402px)" Node 28:379)
+   Portrait: rechts, ab M oben ~28px über den Verlauf hinaus */
+
+.heroSection {
+  overflow:visible;
+  z-index:2; /* Über dem Header (z-index:1), damit der Kopf herausragen kann */
+
+  /* Mobil bestimmt der Inhalt die Höhe des Verlaufs (Figma: 25px/27px Innenabstand) */
+  padding-top:1.389rem;
+  padding-bottom:1.5rem;
+
+  /* Absolute Positionierung am Inhaltsbereich (.elementSection), nicht am .sectionInner */
+  > .sectionInner {
+    position:static;
+  }
+
+  /* Text/Button über dem Portrait */
+  .heroIntro .heroClaim,
+  .heroIntro .heroSubclaim,
+  .heroIntro .heroSubclaimList,
+  > .sectionInner > .elementLink {
+    position:relative;
+    z-index:2;
+  }
+
+  .heroPortrait {
+    display:block;
+    position:absolute;
+    right:0; /* mobil bündig mit dem Viewport-Rand (Figma) */
+    bottom:0; /* bündig mit unterem Verlaufs-Rand */
+    z-index:1;
+    /* Figma mobil: Portrait 293px bei Verlauf 376px, schmalerer Zuschnitt 189x293 */
+    height:78%;
+    width:auto;
+    max-width:50%;
+    aspect-ratio:189 / 293;
+    object-fit:cover;
+    object-position:left top;
+    margin:0;
+    padding:0;
+    pointer-events:none;
+  }
+
+  @media (min-width: $viewport_m_min){
+
+    /* Der Standard-Innenabstand des Inhaltsbereichs (3 × $paddingDefault) macht
+       den Bereich zu hoch — hier reduziert. Unterhalb von XL bestimmt der Inhalt
+       die Höhe des Verlaufs. */
+    padding-top:$paddingDefault;
+    padding-bottom:$paddingDefault;
+
+    .heroPortrait {
+      /* Rechts im Content-Raster (max. 1200px), leicht eingerückt wie Figma (~19px) */
+      right:max($paddingSmall, calc((100% - #{$widthMaxWide}) / 2 + 1.056rem));
+      /* Höhe an den Verlauf gekoppelt (+28px Überstand nach oben wie in Figma),
+         Breite folgt dem Seitenverhältnis */
+      max-width:40%;
+      height:calc(100% + 1.556rem);
+      aspect-ratio:489 / 574; /* sichtbarer Frame, Cutout unten beschnitten */
+      object-position:top center;
+    }
+  }
+
+  /* Ab XL die feste Figma-Geometrie: Verlauf 546px, Portrait 574px */
+  @media (min-width: $viewport_xl_min){
+
+    min-height:30.333rem; /* 546px (Figma) */
+  }
+}
+
+.heroIntro {
+
+  padding:0;
+
+  .heroClaim {
+    margin:0 0 2.111rem 0; /* 38px Abstand zur Liste (Figma mobil) */
+    max-width:38rem; /* 685px */
+    color:var(--baseColorWhite);
+    font-size:1.778rem; /* 32px (Figma mobil) */
+    font-weight:bold;
+    line-height:1.2;
+  }
+
+  /* Einzeiliger Subclaim — erst ab M, mobil ersetzt durch die Liste */
+  .heroSubclaim {
+    display:none;
+    margin:0 0 1.5rem 0;
+    color:var(--baseColorWhite);
+    font-size:1.458rem; /* 26.25px — 0,625 der XL-Größe (42px) */
+    font-weight:bold;
+    font-style:italic;
+    line-height:1.3;
+  }
+
+  /* Mobile Liste "ad hoc / kompakt / begleitet" (Figma Node 28:447) */
+  .heroSubclaimList {
+    margin:0 0 2.611rem 1.667rem; /* 47px zum Button, 30px eingerückt (Figma) */
+    padding:0;
+    list-style:none;
+
+    li {
+      display:flex;
+      align-items:center;
+      gap:0.833rem; /* 15px */
+      margin:0;
+      padding:0;
+      color:var(--baseColorWhite);
+      font-size:1.556rem; /* 28px (Figma) */
+      font-weight:bold;
+      font-style:italic;
+      line-height:1.2;
+
+      &::before {
+        content:'';
+        flex:0 0 auto;
+        width:1.111rem; /* 20px */
+        height:1.111rem;
+        background:url("#{$wGlobalProjectPath}/wGlobal/layout/images/icons/list-style-punkt-outline.svg?fill=#{$baseColorWhite}") no-repeat center;
+        background-size:contain;
+      }
+
+      + li {
+        margin-top:0.389rem; /* 7px */
+      }
+    }
+  }
+
+  @media (min-width: $viewport_m_min){
+
+    padding:3.5rem 0 1rem 0;
+
+    .heroClaim {
+      margin:0 0 1.2rem 0;
+      font-size:2.222rem; /* 40px — wie der Button 0,625 der XL-Größe (64px) */
+    }
+
+    .heroSubclaim {
+      display:block;
+      margin:0 0 1.8rem 0; /* 0,625 des XL-Abstands zum Button */
+    }
+
+    .heroSubclaimList {
+      display:none;
+    }
+  }
+
+  /* Ab XL die Figma-Größen aus "Anfangsseite (1440px)" */
+  @media (min-width: $viewport_xl_min){
+
+    .heroClaim {
+      font-size:3.556rem; /* 64px (Figma) */
+    }
+
+    .heroSubclaim {
+      margin:0 0 2.9rem 0; /* 52px Abstand zum Button (Figma) */
+      font-size:2.333rem; /* 42px (Figma) */
+    }
+  }
+}
+
+.hero-icon{
+  width:100%;
+  figure {
+    width:100%;
+    .svg-icon {
+      fill: $baseColorWhite;;
+    }
+    .svg-background {
+      fill: $baseColorPrimary2;
+    }
+  }
+}
+
+.iconBgBlue{
+  width:100%;
+  max-width: 120px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  figure {
+    text-align: center;
+    width:100%;
+    max-width: 120px;
+    .svg-icon {
+      fill: $baseColorPrimary2;;
+    }
+    .svg-background {
+      fill: $baseColorPrimary3;
+    }
+  }
+}
+
+/* Zitate-Element (Sprechblasen)
+   Figma "wissenimwandel v.1.2" Node 2001:2801 (Desktop 1440px)
+   und Komponente "Sprechplasenzitat" Node 67:211.
+   Sprechblase 248x248px, Text 18px zentriert, weiße Schrift,
+   Farbe pro Karte abwechselnd (Petrol-Blau / Grün). */
+
+$zitatBubbleSize:12.4rem; /* 248px bei Basisschriftgröße 20px (XL) */
+$zitatColorBlue:$baseColorPrimary3; /* #28367B (Figma) */
+$zitatColorGreen:$baseColorPrimary2; /* #009E87 (Figma) */
+
+.zitateElement {
+
+  /* Abstand unter dem Element */
+  margin:0 0 $marginBottomElement 0;
+
+  .zitateElementList {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    justify-content:center;
+    gap:2rem;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+
+  .zitateElementItem {
+    flex:0 0 auto;
+    width:$zitatBubbleSize;
+    max-width:100%;
+    margin:0;
+    padding:0;
+  }
+
+  .zitateElementBubble {
+    position:relative;
+    width:100%;
+    aspect-ratio:1 / 1;
+    /* Sprechblase als Hintergrund (SVG, Farbe via ?fill=) */
+    background-repeat:no-repeat;
+    background-position:center top;
+    background-size:100% 100%;
+  }
+
+  /* Weiß erzwingen: Section setzt --fontColor auf Default (dunkel) */
+  .zitateElementBubble,
+  .zitateElementBubble p.zitateElementText,
+  p.zitateElementText,
+  .zitateElementText {
+    color:$baseColorWhite !important; /* #FFFFFF aus colors.scss */
+  }
+
+  /* Textbereich wie in Figma (Komponente 67:211):
+     oben 13.11%, seitlich 13.7%, unten 31.56% (Platz für den Zipfel) */
+  p.zitateElementText,
+  .zitateElementText {
+    position:absolute;
+    top:13.11%;
+    left:13.7%;
+    right:13.7%;
+    bottom:31.56%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    font-size:0.9rem; /* 18px bei Basisschriftgröße 20px (XL) */
+    font-weight:normal;
+    line-height:1.5;
+    text-align:center;
+    overflow-wrap:break-word;
+  }
+
+  /* Farbe abwechselnd pro Karte */
+  .zitateElementItem--color1 .zitateElementBubble {
+    background-image:url("#{$wGlobalProjectPath}/wGlobal/layout/images/icons/zitat-sprechblase.svg?fill=#{$zitatColorBlue}");
+  }
+
+  .zitateElementItem--color2 .zitateElementBubble {
+    background-image:url("#{$wGlobalProjectPath}/wGlobal/layout/images/icons/zitat-sprechblase.svg?fill=#{$zitatColorGreen}");
+  }
+
+  /* Ab M: versetzte Anordnung wie in Figma (Karten abwechselnd höher/tiefer) */
+  @media (min-width: $viewport_m_min){
+
+    .zitateElementList {
+      gap:1.5rem 1.25rem;
+    }
+
+    /* Geradzahlige Karten nach unten versetzen (Figma: 180px Offset) */
+    .zitateElementItem--color2 {
+      margin-top:9rem; /* 180px bei Basisschriftgröße 20px (XL) */
+    }
+  }
+
+  /* Ab XL die exakte Figma-Geometrie */
+  @media (min-width: $viewport_xl_min){
+
+    .zitateElementList {
+      flex-wrap:nowrap;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:0;
+    }
+
+    .zitateElementItem {
+      width:$zitatBubbleSize;
+    }
+
+    .zitateElementItem--color2 {
+      margin-top:9rem; /* 180px (Figma) */
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Zitate-Carousel (Methoden-Seite) — Variante neben Startseiten-Layout (_var0)
+
+   Wrapper-Klassen (gleichwertig, eine reicht):
+     .zitateElement--carousel
+     .zitateElement_var1
+
+   Item-Farben (bestehend):
+     .zitateElementItem--color1  → Blau ($baseColorPrimary3 / --color1-SVG)
+     .zitateElementItem--color2  → Grün ($baseColorPrimary2 / --color2-SVG)
+
+   Item-Seite (horizontaler Versatz):
+     .zitateElementItem--side-left
+     .zitateElementItem--side-right
+
+   Zustände (JS-Zyklus Stage 2):
+     .is-waiting  → unsichtbar, unten (Startposition)
+     .is-active   → sichtbar, eingefahren
+     .is-leaving  → nach oben ausfahren + ausblenden
+     danach wieder .is-waiting (Transition nur bei Enter/Leave — Reset ohne Sprung)
+
+   Timing: Enter/Leave ~0.7s; Haltezeit steuert JS.
+   -------------------------------------------------------------------------- */
+
+$zitatCarouselEnterMs:0.7s;
+$zitatCarouselLeaveMs:0.7s;
+$zitatCarouselTravel:42%; /* vertikaler Ein-/Ausflug relativ zur Bubble */
+
+.zitateElement--carousel,
+.zitateElement_var1 {
+
+  .zitateElementList {
+    position:relative;
+    display:block;
+    /* eine Bubble; Ein-/Ausflug wird per overflow abgeschnitten */
+    height:$zitatBubbleSize;
+    min-height:$zitatBubbleSize;
+    overflow:hidden;
+    margin:0;
+    padding:0;
+    list-style:none;
+    gap:0;
+  }
+
+  .zitateElementItem {
+    position:absolute;
+    top:0;
+    left:50%;
+    z-index:0;
+    flex:none;
+    width:$zitatBubbleSize;
+    max-width:90%;
+    margin:0 !important; /* Startseiten-Offset (--color2) hier nicht */
+    padding:0;
+    opacity:0;
+    pointer-events:none;
+    /* Default = waiting (unten), zentriert; Transition nur bei active/leaving */
+    transform:translate(-50%, $zitatCarouselTravel);
+    transition:none;
+  }
+
+  .zitateElementItem--side-left {
+    left:4%;
+    right:auto;
+    transform:translate(0, $zitatCarouselTravel);
+
+    @media (min-width: $viewport_m_min){
+      left:8%;
+    }
+  }
+
+  .zitateElementItem--side-right {
+    left:auto;
+    right:4%;
+    transform:translate(0, $zitatCarouselTravel);
+
+    @media (min-width: $viewport_m_min){
+      right:8%;
+    }
+  }
+
+  .zitateElementItem.is-waiting {
+    z-index:0;
+    opacity:0;
+    transform:translate(-50%, $zitatCarouselTravel);
+    transition:none;
+    pointer-events:none;
+  }
+
+  .zitateElementItem--side-left.is-waiting,
+  .zitateElementItem--side-right.is-waiting {
+    transform:translate(0, $zitatCarouselTravel);
+  }
+
+  .zitateElementItem.is-active {
+    z-index:2;
+    opacity:1;
+    transform:translate(-50%, 0);
+    pointer-events:auto;
+    transition:
+      opacity $zitatCarouselEnterMs ease-out,
+      transform $zitatCarouselEnterMs ease-out;
+  }
+
+  .zitateElementItem--side-left.is-active,
+  .zitateElementItem--side-right.is-active {
+    transform:translate(0, 0);
+  }
+
+  .zitateElementItem.is-leaving {
+    z-index:1;
+    opacity:0;
+    transform:translate(-50%, -$zitatCarouselTravel);
+    pointer-events:none;
+    transition:
+      opacity $zitatCarouselLeaveMs ease-in,
+      transform $zitatCarouselLeaveMs ease-in;
+  }
+
+  .zitateElementItem--side-left.is-leaving,
+  .zitateElementItem--side-right.is-leaving {
+    transform:translate(0, -$zitatCarouselTravel);
+  }
+
+  /* Startseiten-Vertikalversatz (--color2) in der Carousel-Variante aus */
+  .zitateElementItem--color2 {
+    margin-top:0 !important;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+
+    .zitateElementItem.is-active,
+    .zitateElementItem.is-leaving {
+      transition-duration:0.01ms;
+    }
+
+    .zitateElementItem.is-waiting,
+    .zitateElementItem--side-left.is-waiting,
+    .zitateElementItem--side-right.is-waiting,
+    .zitateElementItem.is-leaving,
+    .zitateElementItem--side-left.is-leaving,
+    .zitateElementItem--side-right.is-leaving {
+      transform:translate(-50%, 0);
+    }
+
+    .zitateElementItem--side-left.is-waiting,
+    .zitateElementItem--side-right.is-waiting,
+    .zitateElementItem--side-left.is-leaving,
+    .zitateElementItem--side-right.is-leaving {
+      transform:translate(0, 0);
+    }
+  }
+}
+
+.bulletkasten {
+  padding: 2rem;
+  p {
+    color: $baseColorWhite!important;
+  }
+  h2, h3, h4 {
+    color: $baseColorPrimary2!important;
+  }
+}
