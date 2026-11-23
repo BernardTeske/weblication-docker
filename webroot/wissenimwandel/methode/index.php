@@ -349,7 +349,8 @@ Ich arbeite mit Microsoft Visio: Ein bewährtes Tool, das meine Kunden kennen...
             <wd:item type="script.php" uid="5b92c25d0eb3ceedaef4fa1f872fcef6">
               <wd:fragment id="title" type="char.text"/>
               <wd:fragment id="display" type="char.display"/>
-              <wd:fragment id="text" type="text.standard"><![CDATA[// Ein Zitat aus /wissenimwandel/zitate zufällig ausgeben (Weblication PHP-API)
+              <wd:fragment id="text" type="text.standard"><![CDATA[// Alle Zitate aus /wissenimwandel/zitate laden und nacheinander animieren
+// (Carousel-Variante, Klassen siehe additional.scss, Weblication PHP-API)
 $dirQuotes = '/wissenimwandel/zitate';
 
 $listParameters = array();
@@ -368,7 +369,8 @@ if(is_array($pathsQuotes) && count($pathsQuotes) > 0){
   // Zufällige Reihenfolge bei jedem Aufruf
   shuffle($pathsQuotes);
 
-  // Genau ein Zitat ausgeben: erstes Element mit nicht leerem Text
+  // Alle gültigen Zitate sammeln (description, sonst name)
+  $quotes = array();
   foreach($pathsQuotes as $pathQuote){
     $zitatText = trim((string)wDocumentData::getDataObject($pathQuote, 'description'));
     if($zitatText === ''){
@@ -377,20 +379,84 @@ if(is_array($pathsQuotes) && count($pathsQuotes) > 0){
     if($zitatText === ''){
       continue;
     }
+    $quotes[] = $zitatText;
+  }
 
-    // Farbe fest blau (--color1)
-    print '<div class="zitateElement zitateElement_var0">';
+  if(count($quotes) > 0){
+    $carouselId = 'zitateCarousel_'.substr(md5(uniqid('', true)), 0, 8);
+
+    print '<div id="'.$carouselId.'" class="zitateElement zitateElement--carousel">';
     print '<ul class="zitateElementList">';
-    print '<li class="zitateElementItem zitateElementItem--color1">';
-    print '<div class="zitateElementBubble">';
-    // Typografische Anführungszeichen: „ … “ (&bdquo; / &ldquo;)
-    print '<p class="zitateElementText">&bdquo;'.htmlspecialchars($zitatText, ENT_QUOTES, 'UTF-8').'&ldquo;</p>';
-    print '</div>';
-    print '</li>';
+
+    $position = 0;
+    foreach($quotes as $zitatText){
+      $position++;
+      // Farbe und Seite pro Item abwechselnd
+      $colorClass = ($position % 2 === 1) ? 'zitateElementItem--color1' : 'zitateElementItem--color2';
+      $sideClass  = ($position % 2 === 1) ? 'zitateElementItem--side-left' : 'zitateElementItem--side-right';
+
+      // Initial unsichtbar: is-waiting
+      print '<li class="zitateElementItem '.$colorClass.' '.$sideClass.' is-waiting">';
+      print '<div class="zitateElementBubble">';
+      // Typografische Anführungszeichen: „ … “ (&bdquo; / &ldquo;)
+      print '<p class="zitateElementText">&bdquo;'.htmlspecialchars($zitatText, ENT_QUOTES, 'UTF-8').'&ldquo;</p>';
+      print '</div>';
+      print '</li>';
+    }
+
     print '</ul>';
     print '</div>';
 
-    break;
+    // Zustands-Zyklus: is-waiting -> is-active -> is-leaving -> is-waiting (Endlosschleife)
+    // Timing je Item aus dem CSS (Enter/Leave ~0.7s) + Haltezeit.
+    print <<<HTML
+<script>
+(function(){
+  var root = document.getElementById('{$carouselId}');
+  if(!root){ return; }
+  var items = root.querySelectorAll('.zitateElementItem');
+  if(!items.length){ return; }
+
+  var ENTER_MS = 700;   // passend zu \$zitatCarouselEnterMs (0.7s)
+  var LEAVE_MS = 700;   // passend zu \$zitatCarouselLeaveMs (0.7s)
+  var HOLD_MS  = 3000;  // sichtbare Haltezeit
+  var index = 0;
+
+  function reset(el){
+    // is-waiting ohne Transition setzen (Reset ohne sichtbaren Sprung)
+    el.classList.remove('is-active', 'is-leaving');
+    el.classList.add('is-waiting');
+  }
+
+  function cycle(){
+    var current = items[index];
+    reset(current);
+    // Reflow erzwingen, damit der Reset ohne Transition greift
+    void current.offsetWidth;
+
+    // Enter: waiting -> active
+    current.classList.remove('is-waiting');
+    current.classList.add('is-active');
+
+    // Nach Haltezeit: active -> leaving
+    window.setTimeout(function(){
+      current.classList.remove('is-active');
+      current.classList.add('is-leaving');
+
+      // Nach Leave: leaving -> waiting (Reset), dann naechstes Item
+      window.setTimeout(function(){
+        reset(current);
+        index = (index + 1) % items.length;
+        cycle();
+      }, LEAVE_MS);
+    }, ENTER_MS + HOLD_MS);
+  }
+
+  // Alle initial unsichtbar (is-waiting) lassen, dann Beginn
+  cycle();
+})();
+</script>
+HTML;
   }
 }
 ]]></wd:fragment>
