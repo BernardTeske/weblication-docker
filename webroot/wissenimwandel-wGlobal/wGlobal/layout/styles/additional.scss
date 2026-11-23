@@ -324,28 +324,34 @@ $zitatColorGreen:$baseColorPrimary2; /* #009E87 (Figma) */
      .zitateElementItem--side-right
 
    Zustände (JS-Zyklus Stage 2):
-     .is-waiting  → unsichtbar, unten (Startposition)
-     .is-active   → sichtbar, eingefahren
-     .is-leaving  → nach oben ausfahren + ausblenden
+     .is-waiting  → unsichtbar, unter der Ruheposition
+     .is-active   → sichtbar, ~50px vom oberen Rand (Ruheposition)
+     .is-leaving  → nach oben (im Rahmen) + opacity 0 — kein overflow:hidden
      danach wieder .is-waiting (Transition nur bei Enter/Leave — Reset ohne Sprung)
 
    Timing: Enter/Leave ~0.7s; Haltezeit steuert JS.
+   Wrapper/Liste: width 100%.
    -------------------------------------------------------------------------- */
 
 $zitatCarouselEnterMs:0.7s;
 $zitatCarouselLeaveMs:0.7s;
-$zitatCarouselTravel:42%; /* vertikaler Ein-/Ausflug relativ zur Bubble */
+/* Ruheposition der sichtbaren Blase unter dem oberen Rand */
+$zitatCarouselRestTop:50px;
+/* Ein-/Ausflug innerhalb des Containers — kein Overflow-Cut nötig */
+$zitatCarouselTravel:50px;
 
 .zitateElement--carousel,
 .zitateElement_var1 {
+  width:100%;
 
   .zitateElementList {
     position:relative;
     display:block;
-    /* eine Bubble; Ein-/Ausflug wird per overflow abgeschnitten */
-    height:$zitatBubbleSize;
-    min-height:$zitatBubbleSize;
-    overflow:hidden;
+    width:100%;
+    /* Rest-Offset + Bubble; Leave bleibt im Rahmen (kein overflow:hidden) */
+    height:calc(#{$zitatBubbleSize} + #{$zitatCarouselRestTop});
+    min-height:calc(#{$zitatBubbleSize} + #{$zitatCarouselRestTop});
+    overflow:visible;
     margin:0;
     padding:0;
     list-style:none;
@@ -354,7 +360,7 @@ $zitatCarouselTravel:42%; /* vertikaler Ein-/Ausflug relativ zur Bubble */
 
   .zitateElementItem {
     position:absolute;
-    top:0;
+    top:$zitatCarouselRestTop;
     left:50%;
     z-index:0;
     flex:none;
@@ -364,7 +370,7 @@ $zitatCarouselTravel:42%; /* vertikaler Ein-/Ausflug relativ zur Bubble */
     padding:0;
     opacity:0;
     pointer-events:none;
-    /* Default = waiting (unten), zentriert; Transition nur bei active/leaving */
+    /* Default = waiting (unter der Ruheposition), zentriert; Transition nur bei active/leaving */
     transform:translate(-50%, $zitatCarouselTravel);
     transition:none;
   }
@@ -420,6 +426,7 @@ $zitatCarouselTravel:42%; /* vertikaler Ein-/Ausflug relativ zur Bubble */
   .zitateElementItem.is-leaving {
     z-index:1;
     opacity:0;
+    /* nach oben zur Container-Oberkante (RestTop − Travel ≈ 0), fade — ohne Clipping */
     transform:translate(-50%, -$zitatCarouselTravel);
     pointer-events:none;
     transition:
