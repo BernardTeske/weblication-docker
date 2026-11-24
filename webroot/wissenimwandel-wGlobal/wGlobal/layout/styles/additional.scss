@@ -510,3 +510,12 @@ $zitatCarouselTravel:50px;
     margin-right:var(--halbpunktWidth);
   }
 }
+
+/* 5: Opener (Menü-Auflapper) — linken Margin entfernen (8px → 0),
+   damit er bündig an den linken Fließtext-Gutter rückt.
+   Oben/rechts/unten bleiben 8px (Kunden-Vorgabe BTD-1298). */
+@media (max-width: $viewportMaxHeaderMobile){
+  .headerElementNavigationToggler_var0 #navigationMainToggler {
+    margin:8px 8px 8px 0;
+  }
+}
