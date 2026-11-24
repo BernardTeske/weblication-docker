@@ -499,3 +499,14 @@ $zitatCarouselTravel:50px;
     min-height:180px;
   }
 }
+
+/* 4: Termin-Button rechts — asymmetrischen Innenabstand des Buttons ausgleichen.
+   .headerElementLink_var20 .headerLink hat sonst margin-right:calc(var(--halbpunktWidth) + 1rem);
+   das erzeugt sichtbaren Leerraum rechts neben dem Button. Auf mobil symmetrisch zur
+   linken Seite auf var(--halbpunktWidth) reduzieren, sodass der Button bündig am
+   20px-Fließtext-Gutter endet. */
+@media (max-width: $viewportMaxHeaderMobile){
+  .headerElementSection_var400 .headerElementLink .headerLink {
+    margin-right:var(--halbpunktWidth);
+  }
+}
