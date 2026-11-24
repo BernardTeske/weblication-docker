@@ -467,6 +467,40 @@ $zitatCarouselTravel:50px;
       transform:translate(0, 0);
     }
   }
+
+  /* Mobile (BTD-1301): Sprechblasen auch bei --side-left/--side-right zentrieren.
+     Desktop (>= $viewport_m_min) mit seitlicher Anordnung bleibt unverändert. */
+  @media (max-width: $viewport_m_max){
+
+    .zitateElementItem--side-left,
+    .zitateElementItem--side-right {
+      left:50%;
+      right:auto;
+      transform:translate(-50%, $zitatCarouselTravel);
+    }
+
+    .zitateElementItem--side-left.is-active,
+    .zitateElementItem--side-right.is-active {
+      transform:translate(-50%, 0);
+    }
+
+    .zitateElementItem--side-left.is-leaving,
+    .zitateElementItem--side-right.is-leaving {
+      transform:translate(-50%, -$zitatCarouselTravel);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+
+      .zitateElementItem--side-left.is-waiting,
+      .zitateElementItem--side-right.is-waiting,
+      .zitateElementItem--side-left.is-active,
+      .zitateElementItem--side-right.is-active,
+      .zitateElementItem--side-left.is-leaving,
+      .zitateElementItem--side-right.is-leaving {
+        transform:translate(-50%, 0);
+      }
+    }
+  }
 }
 
 .bulletkasten {
