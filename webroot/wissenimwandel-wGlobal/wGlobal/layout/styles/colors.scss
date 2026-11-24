@@ -1,0 +1,310 @@
+/* Farben */
+
+/* Primärfarben */
+
+$baseColorPrimary1:#215A6A; /* Primärfarbe 1 (Figma: Petrol) */
+$baseColorPrimary2:#009E87; /* Primärfarbe 2 (Figma: Grün) */
+$baseColorPrimary3:        #28367B; /* Primärfarbe 3 */
+
+/* Basisfarben */
+
+$baseColorWhite:#FFFFFF; /* weiß */
+$baseColorLighter:#E7EBEA; /* heller (Figma: baseColorLighter) */
+$baseColorLight:#DDDDDD; /* hell */
+$baseColorSemi:#C0C0C0; /* mittel */
+$baseColorDark:#6D6D6D; /* dunkel */
+$baseColorDarker:#444444; /* dunkler */
+$baseColorBlack:#1D1D1B; /* schwarz (Figma: fontColorDefault) */
+
+/* Seite */
+
+$backgroundColorBody:$baseColorWhite; /* Hintergrundfarbe der Seite comment="Bei 100% breiter Darstellung ist der Seitenhintergrund nicht sichtbar. <br />Passen Sie in diesem Fall weiter unten den Hintergrund des Inhaltsbereichs an." */
+$backgroundColorTheme:; /* Browser-Theme-Farbe comment="Diese Farbe wird von unterstützten Browsern verwendet, um die Adressleiste und Teile der Benutzeroberfläche anzupassen." */
+
+/* Kopfbereich */
+
+$backgroundColorHeader:$baseColorWhite; /* Hintergrundfarbe des Kopfbereichs */
+
+/*  Vorangestellte Kopfleiste */
+
+$backgroundColorHeaderBefore:$baseColorDarker; /* Hintergrundfarbe showIf="$displayHeaderBefore == yes && $headerType != structure" */
+$fontColorHeaderBefore:$baseColorWhite; /* Schriftfarbe außer Navigationspunkte showIf="$displayHeaderBefore == yes && $headerType != structure" */
+$fontColorSearchSymbolHeaderBefore:$baseColorWhite; /* Farbe des Suchsymbols showIf="$displaySearch == pre && $headerType != structure" */
+
+/*  Nachgestellte Kopfleiste */
+
+$fontColorHeaderAfter:$baseColorDark; /* Schriftfarbe außer Navigationspunkte showIf="$displayHeaderAfter == yes && $headerType != structure" */
+$backgroundColorHeaderAfter:$baseColorLight; /* Hintergrundfarbe showIf="$displayHeaderAfter == yes && $headerType != structure" */
+
+/*  Volltextsuche */
+
+$fontColorSearchSymbolHeader:$baseColorBlack; /* Farbe des Suchsymbols showIf="$displaySearch == yes" */
+$fontColorSearchSymbolHeaderAfter:$baseColorBlack; /* Farbe des Suchsymbols showIf="$displaySearch == post" */
+$backgroundColorSearchLayer:$baseColorLight; /* Farbe des Layers showIf="$searchDisplay == layer" */
+
+/*  Metanavigation */
+
+$fontColorNavigationMetaLevel1:rgba($baseColorBlack, 0.4); /* Schriftfarbe showIf="$displayNavigationMeta != pre && $displayNavigationMeta != yes" */
+$fontColorNavigationMetaLevel1Selected:rgba($baseColorBlack, 0.6); /* Schriftfarbe ausgewählt showIf="$displayNavigationMeta != yes && $displayNavigationMeta != pre" */
+$fontColorNavigationMetaLevel1Hover:rgba($baseColorBlack, 0.6); /* Schriftfarbe beim Überfahren showIf="$displayNavigationMeta != yes && $displayNavigationMeta != pre" */
+$fontColorNavigationMetaLevel1Active:rgba($baseColorBlack, 0.6); /* Schriftfarbe während des Klicks showIf="$displayNavigationMeta != yes && $displayNavigationMeta != pre" */
+
+$fontColorNavigationMetaHeaderMainLevel1:rgba($baseColorBlack, 0.4); /* Schriftfarbe showIf="$displayNavigationMeta == yes" */
+$fontColorNavigationMetaHeaderMainLevel1Selected:rgba($baseColorBlack, 0.6); /* Schriftfarbe ausgewählt showIf="$displayNavigationMeta == yes" */
+$fontColorNavigationMetaHeaderMainLevel1Hover:rgba($baseColorBlack, 0.6); /* Schriftfarbe beim Überfahren showIf="$displayNavigationMeta == yes" */
+$fontColorNavigationMetaHeaderMainLevel1Active:rgba($baseColorBlack, 0.6); /* Schriftfarbe während des Klicks showIf="$displayNavigationMeta == yes" */
+
+$fontColorNavigationMetaHeaderBeforeLevel1:$baseColorWhite; /* Schriftfarbe showIf="$displayNavigationMeta == pre" */
+$fontColorNavigationMetaHeaderBeforeLevel1Selected:$baseColorLighter; /* Schriftfarbe ausgewählt showIf="$displayNavigationMeta == pre" */
+$fontColorNavigationMetaHeaderBeforeLevel1Hover:$baseColorLighter; /* Schriftfarbe beim Überfahren showIf="$displayNavigationMeta == pre" */
+$fontColorNavigationMetaHeaderBeforeLevel1Active:$baseColorLighter; /* Schriftfarbe während des Klicks showIf="$displayNavigationMeta == pre" */
+
+$backgroundColorNavigationMeta:transparent; /* Hintergrundfarbe showIf="$displayNavigationMeta != no" */
+
+/*  Hauptnavigation */
+
+$backgroundColorNavigationMain:transparent; /* Hintergrundfarbe */
+$backgroundColorNavigationMainLayer:$baseColorLighter; /* Hintergrundfarbe der Layer */
+$backgroundColorMegaDropdown:$baseColorLighter; /* Hintergrundfarbe von Megadropdowns */
+
+$backgroundColorNavigationMainBlockBefore:transparent; /* Hintergrundfarbe falls im Inhaltsbereich showIf="$displayNavigationMainBlockBefore == yes" */
+
+/*   Schriftfarben */
+
+$fontColorNavigationMainLevel1:$baseColorPrimary1; /* Level 1 (Figma NavPoint Standard: Petrol) */
+$fontColorNavigationMainLevel1Selected:$baseColorPrimary1; /* Level 1 ausgewählt (Figma NavPoint active: Petrol) */
+$fontColorNavigationMainLevel1Hover:$backgroundColorButtonHover; /* Level 1 beim Überfahren (Figma NavPoint hover: #28367B) */
+$fontColorNavigationMainLevel1Active:$backgroundColorButtonHover; /* Level 1 während des Klicks */
+
+$fontColorNavigationMainLevel2:$baseColorBlack; /* Ab Level 2 */
+$fontColorNavigationMainLevel2Selected:$baseColorBlack; /* Ab Level 2 ausgewählt */
+$fontColorNavigationMainLevel2Hover:$baseColorBlack; /* Ab Level 2 beim Überfahren */
+$fontColorNavigationMainLevel2Active:$baseColorBlack; /* Ab Level 2 während des Klicks */
+
+/*   Hintergrundfarben */
+
+$backgroundColorNavigationMainLevel1:transparent; /* Level 1 */
+$backgroundColorNavigationMainLevel1Selected:transparent; /* Level 1 ausgewählt */
+$backgroundColorNavigationMainLevel1Hover:transparent; /* Level 1 beim Überfahren */
+$backgroundColorNavigationMainLevel1Active:transparent; /* Level 1 während des Klicks */
+
+$backgroundColorNavigationMainLevel2:transparent; /* Ab Level 2 */
+$backgroundColorNavigationMainLevel2Selected:transparent; /* Ab Level 2 ausgewählt */
+$backgroundColorNavigationMainLevel2Hover:rgba(#000000, 0.06); /* Ab Level 2 beim Überfahren */
+$backgroundColorNavigationMainLevel2Active:rgba($baseColorBlack, 0.2); /* Ab Level 2 während des Klicks */
+
+/*  Menünavigation (z.B. bei mobiler Ansicht) */
+
+$symbolColorNavigationMenu:$baseColorBlack; /* Symbolfarbe der Menünavigation */      
+$symbolColorNavigationMenuOpen:$symbolColorNavigationMenu; /* Symbolfarbe der geöffneten Menünavigation */      
+$backgroundColorNavigationMenu:$baseColorWhite; /* Hintergrundfarbe */
+$borderColorNavigationMenuMenuLevel1:$baseColorSemi; /* Rahmenfarbe Level 1 */
+
+/*   Schriftfarben */
+
+$fontColorNavigationMenuLevel1:$baseColorPrimary1; /* Level 1 */
+$fontColorNavigationMenuLevel1Selected:$baseColorPrimary1; /* Level 1 ausgewählt */
+$fontColorNavigationMenuLevel1Hover:$baseColorPrimary1; /* Level 1 beim Überfahren */
+$fontColorNavigationMenuLevel1Active:$baseColorPrimary1; /* Level 1 während des Klicks */
+
+$fontColorNavigationMenuLevel2:$baseColorBlack; /* Ab Level 2 */
+$fontColorNavigationMenuLevel2Selected:$baseColorBlack; /* Ab Level 2 ausgewählt */
+$fontColorNavigationMenuLevel2Hover:$baseColorBlack; /* Ab Level 2 beim Überfahren */
+$fontColorNavigationMenuLevel2Active:$baseColorBlack; /* Ab Level 2 während des Klicks */
+
+/*   Hintergrundfarben */
+
+$backgroundColorNavigationMenuLevel1:transparent; /* Level 1 */
+$backgroundColorNavigationMenuLevel1Selected:transparent; /* Level 1 ausgewählt */
+$backgroundColorNavigationMenuLevel1Hover:transparent; /* Level 1 beim Überfahren */
+$backgroundColorNavigationMenuLevel1Active:transparent; /* Level 1 während des Klicks */
+
+$backgroundColorNavigationMenuLevel2:transparent; /* Ab Level 2 */
+$backgroundColorNavigationMenuLevel2Selected:transparent; /* Ab Level 2 ausgewählt */
+$backgroundColorNavigationMenuLevel2Hover:transparent; /* Ab Level 2 beim Überfahren */
+$backgroundColorNavigationMenuLevel2Active:transparent; /* Ab Level 2 während des Klicks */
+
+/* Seitliche Unternavigation */
+
+$backgroundColorNavigationSub:transparent; /* Hintergrundfarbe showIf="$displayNavigationLeft == yes" */
+
+/*  Schriftfarben */
+
+$fontColorNavigationSubLevel1:$baseColorBlack; /* Level 1 showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel1Selected:$baseColorBlack; /* Level 1 ausgewählt showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel1Hover:$baseColorBlack; /* Level 1 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel1Active:$baseColorBlack; /* Level 1 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+$fontColorNavigationSubLevel2:$baseColorBlack; /* Ab Level 2 showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel2Selected:$baseColorBlack; /* Ab Level 2 ausgewählt showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel2Hover:$baseColorBlack; /* Ab Level 2 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel2Active:$baseColorBlack; /* Ab Level 2 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+$fontColorNavigationSubLevel3:$baseColorBlack; /* Ab Level 3 showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel3Selected:$baseColorBlack; /* Ab Level 3 ausgewählt showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel3Hover:$baseColorBlack; /* Ab Level 3 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel3Active:$baseColorBlack; /* Ab Level 3 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+$fontColorNavigationSubLevel4:$baseColorBlack; /* Ab Level 4 showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel4Selected:$baseColorBlack; /* Ab Level 4 ausgewählt showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel4Hover:$baseColorBlack; /* Ab Level 4 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$fontColorNavigationSubLevel4Active:$baseColorBlack; /* Ab Level 4 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+/*  Hintergrundfarben */
+
+$backgroundColorNavigationSubLevel1:transparent; /* Level 1 showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel1Selected:transparent; /* Level 1 ausgewählt showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel1Hover:transparent; /* Level 1 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel1Active:transparent; /* Level 1 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+$backgroundColorNavigationSubLevel2:transparent; /* Ab Level 2 showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel2Selected:transparent; /* Ab Level 2 ausgewählt showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel2Hover:transparent; /* Ab Level 2 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel2Active:transparent; /* Ab Level 2 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+$backgroundColorNavigationSubLevel3:transparent; /* Ab Level 3 showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel3Selected:transparent; /* Ab Level 3 ausgewählt showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel3Hover:transparent; /* Ab Level 3 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel3Active:transparent; /* Ab Level 3 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+$backgroundColorNavigationSubLevel4:transparent; /* Ab Level 4 showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel4Selected:transparent; /* Ab Level 4 ausgewählt showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel4Hover:transparent; /* Ab Level 4 beim Überfahren showIf="$displayNavigationLeft == yes" */
+$backgroundColorNavigationSubLevel4Active:transparent; /* Ab Level 4 während des Klicks showIf="$displayNavigationLeft == yes" */
+
+/* Brotkrümelnavigation */
+
+$fontColorNavigationBreadcrumb:rgba($baseColorBlack, 0.7); /* Schriftfarbe showIf="$displayNavigationBreadcrumb == yes" */
+$fontColorNavigationBreadcrumbHover:$baseColorBlack; /* Schriftfarbe beim Überfahren showIf="$displayNavigationBreadcrumb == yes" */
+$fontColorNavigationBreadcrumbActive:$baseColorBlack; /* Schriftfarbe während des Klicksn showIf="$displayNavigationBreadcrumb == yes" */
+$backgroundColorNavigationBreadcrumb:transparent; /* Hintergrundfarbe showIf="$displayNavigationBreadcrumb == yes" */
+
+/* Inhaltsbereich */
+
+$backgroundColorContent:#ffffff; /* Hintergrundfarbe des Inhaltsbereichs */
+
+/*  Schriften */
+
+$fontColorDefault:$baseColorBlack; /* Standard */
+$fontColorSub:rgba($baseColorBlack, 0.6); /* Untergeordnet */
+$fontColorWeak:rgba($baseColorBlack, 0.6); /* Schwach */
+$fontColorInverseDefault:$baseColorWhite; /* Standard invertiert*/
+$fontColorInverseSub:rgba($baseColorWhite, 0.6); /* Untergeordnet invertiert*/
+$fontColorInverseWeak:rgba($baseColorWhite, 0.6); /* Schwach invertiert*/
+$fontColorError:#C00000; /* Fehler */
+
+/*   Überschriften */
+
+$fontColorHeadline1:$baseColorPrimary1; /* Überschrift 1 (Figma: Petrol) */
+$fontColorHeadline2:$baseColorPrimary1; /* Überschrift 2 (Figma: Petrol) */
+$fontColorHeadline3:$baseColorPrimary2; /* Überschrift 3 (Figma: Grün) */
+$fontColorHeadline4:$baseColorBlack; /* Überschrift 4 */
+$fontColorHeadline5:$baseColorBlack; /* Überschrift 5 */
+$fontColorHeadline6:$baseColorBlack; /* Überschrift 6 */
+$fontColorInverseHeadline1:$baseColorWhite; /* Überschrift 1 invertiert*/
+$fontColorInverseHeadline2:$baseColorWhite; /* Überschrift 2 invertiert*/
+$fontColorInverseHeadline3:$baseColorWhite; /* Überschrift 3 invertiert*/
+$fontColorInverseHeadline4:$baseColorWhite; /* Überschrift 4 invertiert*/
+$fontColorInverseHeadline5:$baseColorWhite; /* Überschrift 5 invertiert*/
+$fontColorInverseHeadline6:$baseColorWhite; /* Überschrift 6 invertiert*/
+
+/*   Links */
+
+$fontColorLink:$baseColorPrimary1; /* Link (Figma: Petrol) */
+$fontColorLinkHover:$baseColorPrimary2; /* Link hover (Figma: Grün) */
+$fontColorLinkActive:$baseColorBlack; /* Link aktiv */
+$fontColorInverseLink:$baseColorLighter; /* Link invertiert*/
+$fontColorInverseLinkHover:$baseColorWhite; /* Link hover invertiert*/
+$fontColorInverseLinkActive:$baseColorWhite; /* Link aktiv invertiert*/
+
+/*  Listen */
+
+$fontColorEntryTitle:$baseColorBlack; /* Titel */
+$fontColorEntryDate:rgba(#000000, 0.6); /* Datum */
+$fontColorEntryDescription:rgba($baseColorBlack, 0.6); /* Beschreibung */
+$fontColorInverseEntryTitle:$baseColorWhite; /* Titel invertiert*/
+$fontColorInverseEntryDate:rgba(#FFFFFF, 0.6); /* Datum invertiert*/
+$fontColorInverseEntryDescription: rgba($baseColorWhite, 0.6); /* Beschreibung invertiert*/
+
+/*  Hintergründe */
+
+$backgroundColorWhite:$baseColorWhite; /* Hintergrund weiß */
+$backgroundColorBlack:$baseColorBlack; /* Hintergrund schwarz */
+
+$backgroundColorLight1:$baseColorLighter; /* Hintergrund hell 1 */
+$backgroundColorLight2:$baseColorLight; /* Hintergrund hell 2 */
+
+$backgroundColorDark1:$baseColorDarker; /* Hintergrund dunkel 1 */
+$backgroundColorDark2:$baseColorPrimary1; /* Hintergrund dunkel 2 */
+$backgroundColorError:rgba(#FB0008, 0.2); /* Hintergrundfarbe Fehlermeldung*/
+
+/*  Rahmen */
+$borderColorDefault:$baseColorLight; /* Rahmenfarbe */
+
+/*  Schaltflächen */
+
+$fontColorButton:$baseColorWhite; /* Schriftfarbe */
+$fontColorButtonHover:$baseColorWhite; /* Schriftfarbe beim Überfahren */
+$fontColorButtonActive:$baseColorWhite; /* Schriftfarbe während des Klicks */
+
+$backgroundColorButton:$baseColorPrimary2; /* Hintergrundfarbe (Figma Button Standard: Grün) */
+$backgroundColorButtonHover:#28367B; /* Hintergrundfarbe beim Überfahren (Figma Button hover: Blau) */
+$backgroundColorButtonActive:rgba(#28367B, 0.8); /* Hintergrundfarbe während des Klicks */
+
+$borderColorButton:$baseColorPrimary2; /* Rahmenfarbe (Figma Button Standard: Grün) */
+$borderColorButtonHover:#28367B; /* Rahmenfarbe beim Überfahren */
+$borderColorButtonActive:rgba(#28367B, 0.8); /* Rahmenfarbe während des Klicks */
+
+/*   Auf dunklem Hintergrund */
+
+$fontColorInverseButton:$baseColorBlack; /* Schriftfarbe invertiert */
+$fontColorInverseButtonHover:$baseColorBlack; /* Schriftfarbe invertiert beim Überfahren */
+$fontColorInverseButtonActive:$baseColorBlack; /* Schriftfarbe invertiert während des Klicks */
+
+$backgroundColorInverseButton:$baseColorWhite; /* Hintergrundfarbe invertiert */
+$backgroundColorInverseButtonHover:rgba($baseColorWhite, 0.8); /* Hintergrundfarbe invertiert beim Überfahren */
+$backgroundColorInverseButtonActive:rgba($baseColorWhite, 0.6); /* Hintergrundfarbe invertiert während des Klicks */
+
+$borderColorInverseButton:$baseColorLight; /* Rahmenfarbe invertiert */
+$borderColorInverseButtonHover:rgba($baseColorWhite, 0.8); /* Rahmenfarbe invertiert beim Überfahren */
+$borderColorInverseButtonActive:rgba($baseColorWhite, 0.6); /* Rahmenfarbe invertiert während des Klicks */
+
+/*  Formulare, Eingabefelder */
+
+$backgroundColorInputs:$baseColorLighter; /* Hintergrundfarbe */
+$borderColorInput:transparent; /* Rahmenfarbe */
+$borderColorInputFocus:transparent; /* Rahmenfarbe ausgewählt */
+
+$fontColorButtonUpload:; /* Schriftfarbe Schaltfläche Mehrfach-Uploader */
+$backgroundColorButtonUpload:; /* Hintergrundfarbe Schaltfläche Mehrfach-Uploader */
+$borderColorButtonUpload:; /* Rahmenfarbe Schaltfläche Mehrfach-Uploader */
+
+$fontColorButtonUploadHover:; /* Schriftfarbe Schaltfläche Mehrfach-Uploader bei Überfahren */
+$backgroundColorButtonUploadHover:; /* Hintergrundfarbe Schaltfläche Mehrfach-Uploader bei Überfahren */
+$borderColorButtonUploadHover:; /* Rahmenfarbe Schaltfläche Mehrfach-Uploader bei Überfahren */
+
+/*  Tabellen */
+
+$backgroundColorTable:$baseColorWhite; /* Hintergrundfarbe */
+$fontColorTableHeader:$baseColorBlack; /* Schriftfarbe Tabellenkopf */
+$backgroundColorTableHeader:$baseColorLighter; /* Hintergrundfarbe Tabellenkopf */
+$backgroundColorTableCellHightlighted:$baseColorLighter; /* Hintergrundfarbe hervorgehobene Tabellenzellen */
+$borderColorTable:$baseColorLight; /* Rahmenfarbe */
+
+/*  Link-Icons */
+
+$colorLinkIcon:$fontColorLink; /* Farbe Link-Icons */
+$colorLinkIconInverse:$fontColorInverseLink; /* Farbe Link-Icons invertiert */
+
+/*  Blätternavigation, Kategoriefilter, etc. */
+
+$fontColorFunctions:#606060; /* Schriftfarbe */
+$fontColorFunctionsActive:#000000; /* Schriftfarbe aktiv */
+
+$backgroundColorFunctions:transparent; /* Hintergrundfarbe */
+$backgroundColorFunctionsActive:transparent; /* Hintergrundfarbe aktiv */
+
+/* Fußbereich */
+
+$backgroundColorFooter:$baseColorLighter; /* Hintergrundfarbe des Fußbereiches (Figma: baseColorLighter) help="Spezielle Farben können Sie auch in der Variante des Inhaltsbereichs elementSection.scss definieren." */
+$isDarkBackgroundFooter:no; /* Helle Schriften im Fußbereich nutzen */

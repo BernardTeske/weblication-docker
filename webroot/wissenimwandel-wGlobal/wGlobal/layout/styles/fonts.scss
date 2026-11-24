@@ -1,0 +1,235 @@
+/* Schriften */
+
+/* #mask:buttonEdit caption="Externe Schriften einbinden" path="wGlobal/layout/webfonts/webfonts.wHTML.php" versionMax="16" */
+/* #mask:buttonFilemanager caption="Schriftverzeichnis mit lokalen Schriften öffnen" path="wGlobal/layout/webfonts" versionMax="16" */
+/* #mask:fontFaces */
+
+/* Schriftarten */
+
+/* Carlito (Google Fonts, self-hosted) — Figma: $fontFamilyDefault */
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-Regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-Regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-Bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-Bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-Italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-Italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-BoldItalic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Carlito';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/wissenimwandel-wGlobal/wGlobal/layout/webfonts/Carlito/Carlito-BoldItalic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+
+$fontFamilyDefault:Carlito, Arial, Helvetica, sans-serif; /* Standardschriftart */
+
+$fontFamilyNavigationMain:inherit; /* Hauptnavigation */
+$fontFamilyNavigationSub:inherit; /* Unternavigation */
+
+$fontFamilyHeadline1:inherit; /* Überschrift 1 */
+$fontFamilyHeadline2:inherit; /* Überschrift 2 */
+$fontFamilyHeadline3:inherit; /* Überschrift 3 */
+$fontFamilyHeadline4:inherit; /* Überschrift 4 */
+$fontFamilyHeadline5:inherit; /* Überschrift 5 */
+$fontFamilyHeadline6:inherit; /* Überschrift 6 */
+
+/*  Listen */
+
+$fontFamilyEntryTitle:inherit; /* Listentitel */
+
+/* Schriftgrößen */
+
+$fontSizeRoot:17px; /* Basisschriftgröße */
+$fontSizeRoot_m:18px; /* Basisschriftgröße ab Breakpoint M */
+$fontSizeRoot_l:20px; /* Basisschriftgröße ab Breakpoint L */
+$fontSizeRoot_xl:20px; /* Basisschriftgröße ab Breakpoint XL */
+
+/*  Allgemein */ 
+
+$fontSizeDefault:1rem; /* Standard (Figma: p 18px) */
+$fontSizeLarge:1.35rem; /* Groß (Figma: p gross mobile 22px) */
+$fontSizeXLarge:2rem; /* Sehr groß (Figma: Button-Hero 45px) */
+$fontSizeAdditional:0.9rem; /* Zusatztext */
+
+/*  Navigation */ 
+
+$fontSizeNavigationMainLevel1:1rem; /* Level 1 */
+$fontSizeNavigationMainLevel2:1rem; /* Level 2 */
+$fontSizeNavigationMainLevel3:1rem; /* Level 3 */
+$fontSizeNavigationMainLevel4:1rem; /* Level 4 */
+
+$fontSizeNavigationMenuLevel1:1rem; /* Menünavigation Level 1 */
+$fontSizeNavigationMenuLevel2:1rem; /* Menünavigation Level 2 */
+$fontSizeNavigationMenuLevel3:1rem; /* Menünavigation Level 3 */
+$fontSizeNavigationMenuLevel4:1rem; /* Menünavigation Level 4 */
+
+$fontSizeNavigationMetaLevel1:0.9rem; /* Metanavigationspunkte */
+
+/*  Überschriften */ 
+
+$fontSizeHeadline1:1.556rem; /* Überschrift 1 mobile Ansicht (Figma: 28px) */
+$fontSizeHeadline2:1.333rem; /* Überschrift 2 mobile Ansicht (Figma: 24px) */
+$fontSizeHeadline3:1.222rem; /* Überschrift 3 mobile Ansicht (Figma: 22px) */
+$fontSizeHeadline4:1.111rem; /* Überschrift 4 mobile Ansicht */
+$fontSizeHeadline5:1rem; /* Überschrift 5 mobile Ansicht */
+$fontSizeHeadline6:1rem; /* Überschrift 6 mobile Ansicht */
+
+$fontSizeHeadline1Full:2.222rem; /* Überschrift 1 Großbildschirm (Figma: 40px) */
+$fontSizeHeadline2Full:1.667rem; /* Überschrift 2 Großbildschirm (Figma: 30px) */
+$fontSizeHeadline3Full:1.556rem; /* Überschrift 3 Großbildschirm (Figma: 28px) */
+$fontSizeHeadline4Full:1.111rem; /* Überschrift 4 Großbildschirm */
+$fontSizeHeadline5Full:1rem; /* Überschrift 5 Großbildschirm */
+$fontSizeHeadline6Full:1rem; /* Überschrift 6 Großbildschirm */
+
+/*  Listen */
+
+$fontSizeEntryTitle:$fontSizeHeadline4; /* Listentitel */
+$fontSizeEntryDate:$fontSizeDefault; /* Listendatum */
+$fontSizeEntryDescription:$fontSizeDefault; /* Listenbeschreibung */
+
+/* Schriftstärken */
+
+/*  Navigation */
+
+$fontWeightNavigationMainLevel1:700; /* Level 1 */
+$fontWeightNavigationMainLevel1Selected:700; /* Level 1 ausgewählt */
+$fontWeightNavigationMainLevel2:400; /* Level 2 */
+$fontWeightNavigationMainLevel2Selected:400; /* Level 2 ausgewählt */
+$fontWeightNavigationMainLevel3:400; /* Level 3 */
+$fontWeightNavigationMainLevel3Selected:400; /* Level 3 ausgewählt */
+$fontWeightNavigationMainLevel4:400; /* Level 4 */
+$fontWeightNavigationMainLevel14elected:400; /* Level 4 ausgewählt */  
+
+$fontWeightNavigationMenuLevel1:normal; /* Menünavigation Level 1 */
+$fontWeightNavigationMenuLevel1Selected:normal; /* Menünavigation Level 1 ausgewählt */
+$fontWeightNavigationMenuLevel2:400; /* Menünavigation Level 2 */
+$fontWeightNavigationMenuLevel2Selected:400; /* Menünavigation Level 2 ausgewählt */
+$fontWeightNavigationMenuLevel3:400; /* Menünavigation Level 3 */
+$fontWeightNavigationMenuLevel3Selected:400; /* Menünavigation Level 3 ausgewählt */
+$fontWeightNavigationMenuLevel4:400; /* Menünavigation Level 4 */
+$fontWeightNavigationMenuLevel4Selected:400; /* Menünavigation Level 4 ausgewählt */
+
+$fontWeightNavigationMetaLevel1:400; /* Metanavigationspunkte */
+
+/*  Überschriften */ 
+
+$fontWeightHeadline1:400; /* Überschrift 1 mobile Ansicht (Figma: Regular) */
+$fontWeightHeadline2:400; /* Überschrift 2 mobile Ansicht (Figma: Regular) */
+$fontWeightHeadline3:700; /* Überschrift 3 mobile Ansicht (Figma: Bold) */
+$fontWeightHeadline4:700; /* Überschrift 4  mobile Ansicht */
+$fontWeightHeadline5:700; /* Überschrift 5 mobile Ansicht */
+$fontWeightHeadline6:700; /* Überschrift 6 mobile Ansicht */
+
+$fontWeightHeadline1Full:400; /* Überschrift 1 Großbildschirm (Figma: Regular) */
+$fontWeightHeadline2Full:400; /* Überschrift 2 Großbildschirm (Figma: Regular) */
+$fontWeightHeadline3Full:700; /* Überschrift 3 Großbildschirm (Figma: Bold) */
+$fontWeightHeadline4Full:700; /* Überschrift 4 Großbildschirm */
+$fontWeightHeadline5Full:700; /* Überschrift 5 Großbildschirm */
+$fontWeightHeadline6Full:700; /* Überschrift 6 Großbildschirm */
+
+/*  Listen */
+
+$fontWeightEntryTitle:700; /* Listentitel */
+$fontWeightEntryDate:400; /* Listendatum */
+
+/* Zeilenhöhen */
+
+$lineHeightDefault:150%; /* Standardtext (Figma: 1.5) */
+$lineHeightLarge:150%; /* Groß (Figma: 1.5) */
+$lineHeightXLarge:150%; /* Sehr groß (Figma: 1.5) */
+$lineHeightConclusion:150%; /* Zusammenfassung */
+$lineHeightAdditional:150%; /* Zusatztext */
+
+/*  Navigation */ 
+
+$lineHeightNavigationMainLevel1:48px; /* Level 1 help="Dieser Wert dient zur Berechnung der horizontalen Navigationsposition. Falls die Positionierung in der header.scss nicht manuell definiert wird, muss er deshalb in px angegeben werden." */  
+$lineHeightNavigationMainLevel2:150%; /* Level 2 */  
+$lineHeightNavigationMainLevel3:150%; /* Level 3 */  
+$lineHeightNavigationMainLevel4:150%; /* Level 4 */   
+
+$lineHeightNavigationMenuLevel1:150%; /* Menünavigation Level 1 */
+$lineHeightNavigationMenuLevel2:150%; /* Menünavigation Level 2 */  
+$lineHeightNavigationMenuLevel3:150%; /* Menünavigation Level 3 */  
+$lineHeightNavigationMenuLevel4:150%; /* Menünavigation Level 4 */  
+
+/*  Überschriften */ 
+
+$lineHeightHeadline1:150%; /* Überschrift 1 mobile Ansicht (Figma: 1.5) */
+$lineHeightHeadline2:150%; /* Überschrift 2 mobile Ansicht (Figma: 1.5) */
+$lineHeightHeadline3:150%; /* Überschrift 3 mobile Ansicht (Figma: 1.5) */
+$lineHeightHeadline4:150%; /* Überschrift 4 mobile Ansicht */
+$lineHeightHeadline5:150%; /* Überschrift 5 mobile Ansicht */
+$lineHeightHeadline6:150%; /* Überschrift 6 mobile Ansicht */
+
+$lineHeightHeadline1Full:150%; /* Überschrift 1 Großbildschirm (Figma: 1.5) */
+$lineHeightHeadline2Full:150%; /* Überschrift 2 Großbildschirm (Figma: 1.5) */
+$lineHeightHeadline3Full:150%; /* Überschrift 3 Großbildschirm (Figma: 1.5) */
+$lineHeightHeadline4Full:150%; /* Überschrift 4 Großbildschirm */
+$lineHeightHeadline5Full:150%; /* Überschrift 5 Großbildschirm */
+$lineHeightHeadline6Full:150%; /* Überschrift 6 Großbildschirm */
+
+/*  Listen */
+
+$lineHeightEntryTitle:$lineHeightHeadline4; /* Zeilenhöhe des Listentitel */
+$lineHeightEntryDate:$lineHeightDefault; /* Zeilenhöhe des Listendatum */
+$lineHeightEntryDescription:$lineHeightDefault; /* Zeilenhöhe der Listenbeschreibung */
