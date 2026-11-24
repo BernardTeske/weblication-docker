@@ -519,3 +519,15 @@ $zitatCarouselTravel:50px;
     margin:8px 8px 8px 0;
   }
 }
+
+/* 6: Mobile Nav Menü-Inhalt — 20px-Gutter (BTD-1303 / BTD-1299 Kernbefund 4).
+   Override neben BTD-1295; Mixin navigationMainMenuOverlap.scss bleibt unverändert.
+   Level-1-/Meta-ul: padding links/rechts von 0.5rem/8px auf 20px (wie Header-Gutter).
+   Navpoint-a-Paddings bleiben (L1 0.5rem, je Ebene +1rem) — Einrückung bleibt symmetrisch. */
+@media (max-width: $viewportMaxHeaderMobile){
+  .headerElementNavigation_var0 .headerNavigation > nav > div > ul,
+  .headerElementNavigation_var0 .headerNavigation > nav > div > ul[data-source='meta'] {
+    padding-left:20px;
+    padding-right:20px;
+  }
+}
